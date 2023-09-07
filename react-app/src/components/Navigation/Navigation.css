@@ -1,7 +1,50 @@
+.hidden {
+  display: none;
+}
+
+.homeLink {
+  text-decoration: none;
+  color: white;
+  font-size: x-large;
+}
+
+.navigationBar {
+  list-style-type: none;
+  background-color: rgb(91, 13, 122);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .profile-dropdown {
   position: absolute;
 }
 
-.hidden {
-  display: none;
+#loginButton {
+  background-color: rgb(145, 88, 197);
+  color: white;
+  text-decoration: none;
+  border: solid rgb(145, 88, 197);
+  padding: 5px;
+}
+
+#loginButton:hover {
+  background-color: rgb(141, 73, 155);
+  border: solid rgb(141, 73, 155);
+}
+
+#navLinks {
+  color: rgb(199, 171, 199);
+  text-decoration: none;
+}
+
+#navLinks:hover {
+  color: white;
+}
+
+#profileButton {
+  border: none;
+  background-color: rgb(91, 13, 122);
+  font-size: 200%;
+  cursor: pointer;
 }

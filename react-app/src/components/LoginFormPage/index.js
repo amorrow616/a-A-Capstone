@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -23,7 +23,7 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>Log In</h1>
+      <h1>patternica</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -48,8 +48,9 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit">Login</button>
       </form>
+      <NavLink exact to="/signup" id="noAccount">Don't have a Patternica account? <b>Sign up.</b></NavLink>
     </>
   );
 }

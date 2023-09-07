@@ -18,12 +18,12 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
-        if (data) {
-          setErrors(data)
-        }
+      const data = await dispatch(signUp(username, email, password));
+      if (data) {
+        setErrors(data)
+      }
     } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+      setErrors(['Confirm Password field must be the same as the Password field']);
     }
   };
 
@@ -70,6 +70,7 @@ function SignupFormPage() {
             required
           />
         </label>
+        <p>By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</p>
         <button type="submit">Sign Up</button>
       </form>
     </>
