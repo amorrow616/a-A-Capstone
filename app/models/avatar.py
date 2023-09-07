@@ -7,7 +7,7 @@ class Avatar(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     hair_color = db.Column(db.String(75), nullable=False)
     hair_style = db.Column(db.String(75), nullable=False)
     eye_color = db.Column(db.String(75), nullable=False)
