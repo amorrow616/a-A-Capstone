@@ -1,5 +1,6 @@
 from app.models import db, Todo, environment, SCHEMA
 from sqlalchemy.sql import text
+from datetime import date
 
 def seed_todos():
     todo_one = Todo(
@@ -8,7 +9,7 @@ def seed_todos():
         notes='Purchase large case of bad tasting nail polish',
         checklist='Drive to store, pick out polish, pay for polish',
         difficulty='Easy',
-        due_date='15 Sep 2023',
+        due_date=date(2023, 9, 15),
         tags='Health + Wellness'
     )
     todo_two = Todo(
@@ -17,7 +18,7 @@ def seed_todos():
         notes='Want to make sure water source is pure, crack needs to be repaired',
         checklist='Find correct phone number, schedule repair, be home for repair',
         difficulty='Medium',
-        due_date='01 Oct 2023',
+        due_date=date(2023, 10, 1),
         tags='Health + Wellness'
     )
     todo_three = Todo(
@@ -26,7 +27,7 @@ def seed_todos():
         notes='Want to check the job market, see if I can get a new offer',
         checklist='Update resume, send out resume, schedule interviews',
         difficulty='Hard',
-        due_date='12 Oct 2023',
+        due_date=date(2023, 10, 12),
         tags='Work'
     )
 
