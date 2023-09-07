@@ -1,3 +1,6 @@
-from .db import db
+from .db import db, environment, SCHEMA
 from .user import User
-from .db import environment, SCHEMA
+from .habit import Habit
+from .avatar import Avatar
+from .daily import Daily
+from .todo import Todo
