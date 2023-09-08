@@ -21,8 +21,9 @@ def create_habit(userId):
     """
     Creates a habit based on the user id
     """
-    data = request.json
+    data = request.get_json()
     form = HabitForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_habit = Habit(
             user_id=userId,

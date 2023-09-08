@@ -21,6 +21,13 @@ function LoginFormPage() {
     }
   };
 
+  const demoUser = () => {
+    const email = 'demo@aa.io';
+    const password = 'password';
+
+    dispatch(login(email, password));
+  }
+
   return (
     <>
       <h1>patternica</h1>
@@ -50,6 +57,7 @@ function LoginFormPage() {
         </label>
         <button type="submit">Login</button>
       </form>
+      <button onClick={demoUser}>Demo User</button>
       <NavLink exact to="/signup" id="noAccount">Don't have a Patternica account? <b>Sign up.</b></NavLink>
     </>
   );
