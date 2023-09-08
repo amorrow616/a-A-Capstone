@@ -13,6 +13,8 @@ class Avatar(db.Model):
     eye_color = db.Column(db.String(75), nullable=False)
     shirt_color = db.Column(db.String(75), nullable=False)
     background_color = db.Column(db.String(75), nullable=False)
+    # one user can have one avatar
+    avatar_user = db.relationship("User", back_populates="user_avatar")
 
     def to_dict(self):
         return {

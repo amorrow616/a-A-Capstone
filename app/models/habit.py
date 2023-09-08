@@ -14,6 +14,8 @@ class Habit(db.Model):
     difficulty = db.Column(db.String(20))
     tags = db.Column(db.String(25))
     reset_counter = db.Column(db.String(15))
+    # one user can have many habits
+    habit_user = db.relationship("User", back_populates='user_habit')
 
     def to_dict(self):
         return {

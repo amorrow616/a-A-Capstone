@@ -14,6 +14,8 @@ class Todo(db.Model):
     difficulty = db.Column(db.String(20))
     due_date = db.Column(db.Date)
     tags = db.Column(db.String(25))
+    # one user can have many todos
+    todo_user = db.relationship("User", back_populates="user_todo")
 
     def to_dict(self):
         return {

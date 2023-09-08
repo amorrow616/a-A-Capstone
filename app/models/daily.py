@@ -17,6 +17,8 @@ class Daily(db.Model):
     repeat_every = db.Column(db.Integer)
     repeat_on = db.Column(db.String(50))
     tags = db.Column(db.String(25))
+    # one user can have many dailies
+    daily_user = db.relationship("User", back_populates="user_daily")
 
     def to_dict(self):
         return {
