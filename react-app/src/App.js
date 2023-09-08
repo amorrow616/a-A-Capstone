@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import HomePage from "./components/HomePage/HomePage";
+import HomePageRender from "./components/HomePage";
 import MainPage from "./components/MainPage";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
             <MainPage />
           </Route>
           <Route exact path="/">
-            <HomePage />
+            <HomePageRender />
           </Route>
         </Switch>
       )}
