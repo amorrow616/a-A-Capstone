@@ -2,7 +2,7 @@ import json
 from flask import Blueprint
 from flask_login import login_required
 from app.models import db, Habit
-from app.forms import HabitForm
+from app.forms.habit_form import HabitForm
 
 habit_routes = Blueprint('habits', __name__)
 
