@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint
 from flask_login import login_required
 from app.models import db, Habit
@@ -23,12 +24,18 @@ def create_habit(userId):
     form = HabitForm()
     if form.validate_on_submit():
         new_habit = Habit(
-            "title": form.data["title"],
-            "notes": form.data["notes"],
-            "positive_or_negative": form.data["positive_or_negative"],
-            "difficulty": form.data["difficulty"],
-            "tags": form.data["tags"],
-            "reset_counter": form.data["reset_counter"]
-            )
+            user_id=userId,
+            title= form.data["title"],
+            notes= form.data["notes"],
+            positive_or_negative= form.data["positive_or_negative"],
+            difficulty= form.data["difficulty"],
+            tags= form.data["tags"],
+            reset_counter= form.data["reset_counter"]
+        )
         db.session.add(new_habit)
         db.session.commit()
+
+        return json.dumps([{'habit': new_habit.to_dict()}]), 201
+
+    if form.errors:
+        return form.errors
