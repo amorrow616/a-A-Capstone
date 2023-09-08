@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required
 from app.models import db, Habit
-# from app.forms import HabitForm
+from app.forms import HabitForm
 
 habit_routes = Blueprint('habits', __name__)
 
@@ -13,3 +13,22 @@ def user_habits(userId):
     """
     habits = Habit.query.filter(Habit.user_id == userId).all()
     return {'habits': [habit.to_dict() for habit in habits]}
+
+@habit_routes.route('/<int:userId>', method=['POST'])
+@login_required
+def create_habit(userId):
+    """
+    Creates a habit based on the user id
+    """
+    form = HabitForm()
+    if form.validate_on_submit():
+        new_habit = Habit(
+            "title": form.data["title"],
+            "notes": form.data["notes"],
+            "positive_or_negative": form.data["positive_or_negative"],
+            "difficulty": form.data["difficulty"],
+            "tags": form.data["tags"],
+            "reset_counter": form.data["reset_counter"]
+            )
+        db.session.add(new_habit)
+        db.session.commit()
