@@ -15,7 +15,7 @@ def user_habits(userId):
     habits = Habit.query.filter(Habit.user_id == userId).all()
     return {'habits': [habit.to_dict() for habit in habits]}
 
-@habit_routes.route('/<int:userId>', method=['POST'])
+@habit_routes.route('/<int:userId>', methods=['POST'])
 @login_required
 def create_habit(userId):
     """
