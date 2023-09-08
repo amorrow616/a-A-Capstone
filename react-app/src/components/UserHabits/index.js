@@ -19,7 +19,6 @@ export default function UserHabits() {
                 <li key={habit.id}>
                     <div>{habit.title}</div>
                     <div>{habit.notes}</div>
-                    <div>{habit.difficulty}</div>
                 </li>
             ))
             }

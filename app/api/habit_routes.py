@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import db, Habit
 from app.forms.habit_form import HabitForm
@@ -21,6 +21,7 @@ def create_habit(userId):
     """
     Creates a habit based on the user id
     """
+    data = request.json
     form = HabitForm()
     if form.validate_on_submit():
         new_habit = Habit(
