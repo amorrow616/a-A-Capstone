@@ -1,5 +1,6 @@
 const GET_HABITS = 'habits/GET_HABITS';
 const GET_HABIT = 'habits/GET_HABIT';
+const DELETE_HABIT = 'habits/DELETE_HABIT';
 
 const getHabits = (habits) => {
     return {
@@ -12,6 +13,13 @@ const getHabit = (habit) => {
     return {
         type: GET_HABIT,
         payload: habit
+    }
+}
+
+const toDeleteHabit = (habitId) => {
+    return {
+        type: DELETE_HABIT,
+        payload: habitId
     }
 }
 
@@ -55,6 +63,17 @@ export const updateHabit = (payload, habitId) => async (dispatch) => {
     }
 }
 
+export const deleteHabitThunk = (habitId) => async (dispatch) => {
+    const response = await fetch(`/api/habits/habit/${habitId}`, {
+        method: 'DELETE'
+    });
+
+    const habit = await response.json();
+
+    dispatch(toDeleteHabit(habit));
+    return habit;
+}
+
 const initialState = { allHabits: {}, singleHabit: {} }
 
 export default function habitsReducer(state = initialState, action) {
@@ -67,6 +86,11 @@ export default function habitsReducer(state = initialState, action) {
         case GET_HABIT:
             newState = Object.assign({}, state);
             newState.singleHabit = action.payload;
+            return newState;
+        case DELETE_HABIT:
+            const newRef = { ...state.allHabits };
+            delete newRef[action.payload];
+            newState = { ...state, allHabits: { ...newRef } };
             return newState;
         default:
             return state;

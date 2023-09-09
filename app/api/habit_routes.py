@@ -51,8 +51,6 @@ def update_habit(habitId):
     if not habit:
         return json.dumps({'message': 'Habit not found'}), 404
 
-    # form = HabitForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
     data = request.get_json()
 
     title = data.get('title')
@@ -72,3 +70,18 @@ def update_habit(habitId):
     db.session.commit()
 
     return jsonify(habit.to_dict())
+
+@habit_routes.route('/habit/<int:habitId>', methods=['DELETE'])
+@login_required
+def delete_habit(habitId):
+    """
+    Deletes a habit
+    """
+
+    habit = Habit.query.get(habitId)
+    if habit:
+        db.session.delete(habit)
+        db.session.commit()
+        return json.dumps({'message': 'Habit deleted successfully'}), 200
+
+    return json.dumps({'message': 'Habit not found'}), 404

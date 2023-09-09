@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import CreateHabit from '../CreateHabit';
 
 export default function UpdateHabit({ habit }) {
