@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import OpenModalButton from '../OpenModalButton';
+import UpdateHabit from '../UpdateHabit';
 import * as habitActions from '../../store/habits';
 import './UserHabits.css';
 
@@ -19,6 +21,10 @@ export default function UserHabits() {
                 <li key={habit.id}>
                     <div>{habit.title}</div>
                     <div>{habit.notes}</div>
+                    <OpenModalButton
+                        modalComponent={<UpdateHabit habit={habit} />}
+                        buttonText={'Update habit'}
+                    />
                 </li>
             ))
             }

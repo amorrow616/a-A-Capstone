@@ -41,6 +41,20 @@ export const createHabit = (payload, userId) => async (dispatch) => {
     }
 }
 
+export const updateHabit = (payload, habitId) => async (dispatch) => {
+    const response = await fetch(`/api/habits/habit/${habitId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+        const habit = await response.json();
+        dispatch(getHabit(habit));
+        return habit;
+    }
+}
+
 const initialState = { allHabits: {}, singleHabit: {} }
 
 export default function habitsReducer(state = initialState, action) {

@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import db, Habit
 from app.forms.habit_form import HabitForm
@@ -41,3 +41,34 @@ def create_habit(userId):
 
     if form.errors:
         return form.errors
+
+@habit_routes.route('/habit/<int:habitId>', methods=['PUT'])
+def update_habit(habitId):
+    """
+    Updates a habit using the habits id, returns updated habit in dictionary
+    """
+    habit = Habit.query.get(habitId)
+    if not habit:
+        return json.dumps({'message': 'Habit not found'}), 404
+
+    # form = HabitForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    data = request.get_json()
+
+    title = data.get('title')
+    notes = data.get('notes')
+    positive_or_negative = data.get('positive_or_negative')
+    difficulty = data.get('difficulty')
+    tags = data.get('tags')
+    reset_counter = data.get('reset_counter')
+
+    habit.title = title
+    habit.notes = notes
+    habit.positive_or_negative = positive_or_negative
+    habit.difficulty = difficulty
+    habit.tags = tags
+    habit.reset_counter = reset_counter
+
+    db.session.commit()
+
+    return jsonify(habit.to_dict())

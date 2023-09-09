@@ -4,16 +4,16 @@ import { useModal } from '../../context/Modal';
 import * as habitActions from '../../store/habits';
 import './CreateHabit.css';
 
-export default function CreateHabit() {
+export default function CreateHabit({ habit, formType }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const userId = useSelector((state) => state.session.user.id);
-    const [title, setTitle] = useState('');
-    const [notes, setNotes] = useState('');
-    const [positiveOrNegative, setPositiveOrNegative] = useState(false);
-    const [difficulty, setDifficulty] = useState('');
-    const [tags, setTags] = useState('');
-    const [resetCounter, setResetCounter] = useState('');
+    const [title, setTitle] = useState(formType === 'Update Habit' ? habit.title : '');
+    const [notes, setNotes] = useState(formType === 'Update Habit' ? habit.notes : '');
+    const [positiveOrNegative, setPositiveOrNegative] = useState(formType === 'Update Habit' ? habit.positiveOrNegative : false);
+    const [difficulty, setDifficulty] = useState(formType === 'Update Habit' ? habit.difficulty : '');
+    const [tags, setTags] = useState(formType === 'Update Habit' ? habit.tags : '');
+    const [resetCounter, setResetCounter] = useState(formType === 'Update Habit' ? habit.resetCounter : '');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,15 +25,24 @@ export default function CreateHabit() {
             tags,
             resetCounter
         };
-        const returnFromThunk = habitActions.createHabit(newHabit, userId);
-        return dispatch(returnFromThunk).then(() => {
-            dispatch(habitActions.fetchHabits(userId));
-            closeModal();
-        })
+
+        if (formType === 'Update Habit') {
+            const returnFromThunk = habitActions.updateHabit(newHabit, habit.id);
+            return dispatch(returnFromThunk).then(() => {
+                dispatch(habitActions.fetchHabits(userId));
+                closeModal();
+            });
+        } else {
+            const returnFromThunk = habitActions.createHabit(newHabit, userId);
+            return dispatch(returnFromThunk).then(() => {
+                dispatch(habitActions.fetchHabits(userId));
+                closeModal();
+            });
+        }
     }
     return (
         <>
-            <h1>Create Habit</h1>
+            {formType === 'Update Habit' ? <h1>Edit Habit</h1> : <h1>Create Habit</h1>}
             <form onSubmit={handleSubmit}>
                 <label>
                     Title*
@@ -103,7 +112,7 @@ export default function CreateHabit() {
                     <option value='Weekly'>Weekly</option>
                     <option value='Monthly'>Monthly</option>
                 </select>
-                <button type='submit' disabled={title.length < 1}>Create</button>
+                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1}>Save</button> : <button type='submit' disabled={title.length < 1}>Create</button>}
             </form>
         </>
     )
