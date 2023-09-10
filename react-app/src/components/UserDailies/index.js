@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton';
 import UpdateDaily from '../UpdateDaily';
+import DeleteDaily from '../DeleteDaily';
 import * as dailyActions from '../../store/dailies';
 
 export default function UserDailies() {
@@ -23,6 +24,10 @@ export default function UserDailies() {
                     <OpenModalButton
                         modalComponent={<UpdateDaily daily={daily} />}
                         buttonText={'Update daily'}
+                    />
+                    <OpenModalButton
+                        modalComponent={<DeleteDaily daily={daily} />}
+                        buttonText={'Delete daily'}
                     />
                 </li>
             ))}
