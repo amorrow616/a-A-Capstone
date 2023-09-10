@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton';
+import UpdateDaily from '../UpdateDaily';
 import * as dailyActions from '../../store/dailies';
 
 export default function UserDailies() {
@@ -19,6 +20,10 @@ export default function UserDailies() {
                 <li key={daily.id}>
                     <div>{daily.title}</div>
                     <div>{daily.notes}</div>
+                    <OpenModalButton
+                        modalComponent={<UpdateDaily daily={daily} />}
+                        buttonText={'Update daily'}
+                    />
                 </li>
             ))}
         </>

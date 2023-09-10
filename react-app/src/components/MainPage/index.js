@@ -1,6 +1,7 @@
 import UserHabits from '../UserHabits';
 import UserDailies from '../UserDailies';
 import CreateHabit from '../CreateHabit';
+import CreateDaily from '../CreateDaily';
 import OpenModalButton from '../OpenModalButton';
 import './MainPage.css';
 
@@ -10,6 +11,10 @@ export default function MainPage() {
             <OpenModalButton
                 modalComponent={<CreateHabit />}
                 buttonText={'Habit'}
+            />
+            <OpenModalButton
+                modalComponent={<CreateDaily />}
+                buttonText={'Daily'}
             />
             <div className="mainPageColumns">
                 <div className="habitsColumn">

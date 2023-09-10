@@ -28,14 +28,14 @@ export default function CreateHabit({ habit, formType }) {
 
         if (formType === 'Update Habit') {
             const returnFromThunk = habitActions.updateHabit(newHabit, habit.id);
-            return dispatch(returnFromThunk).then(() => {
-                dispatch(habitActions.fetchHabits(userId));
+            return dispatch(returnFromThunk).then(async () => {
+                await dispatch(habitActions.fetchHabits(userId));
                 closeModal();
             });
         } else {
             const returnFromThunk = habitActions.createHabit(newHabit, userId);
-            return dispatch(returnFromThunk).then(() => {
-                dispatch(habitActions.fetchHabits(userId));
+            return dispatch(returnFromThunk).then(async () => {
+                await dispatch(habitActions.fetchHabits(userId));
                 closeModal();
             });
         }
