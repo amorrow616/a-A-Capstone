@@ -74,7 +74,7 @@ export const deleteHabitThunk = (habitId) => async (dispatch) => {
     return habit;
 }
 
-const initialState = { allHabits: {}, singleHabit: {} }
+const initialState = { allHabits: {}, singleHabit: {} };
 
 export default function habitsReducer(state = initialState, action) {
     let newState;

@@ -1,4 +1,5 @@
 import UserHabits from '../UserHabits';
+import UserDailies from '../UserDailies';
 import CreateHabit from '../CreateHabit';
 import OpenModalButton from '../OpenModalButton';
 import './MainPage.css';
@@ -20,7 +21,7 @@ export default function MainPage() {
                 <div className="dailiesColumn">
                     <h2>Dailies</h2>
                     <div className="innerColumns">
-                        <p>column for dailies</p>
+                        <UserDailies />
                     </div>
                 </div>
                 <div className="todosColumn">

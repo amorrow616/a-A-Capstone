@@ -19,7 +19,7 @@ def user_habits(userId):
 @login_required
 def create_habit(userId):
     """
-    Creates a habit based on the user id
+    Creates a habit linked to logged in user
     """
     data = request.get_json()
     form = HabitForm()
@@ -27,12 +27,12 @@ def create_habit(userId):
     if form.validate_on_submit():
         new_habit = Habit(
             user_id=userId,
-            title= form.data["title"],
-            notes= form.data["notes"],
-            positive_or_negative= form.data["positive_or_negative"],
-            difficulty= form.data["difficulty"],
-            tags= form.data["tags"],
-            reset_counter= form.data["reset_counter"]
+            title = form.data["title"],
+            notes = form.data["notes"],
+            positive_or_negative = form.data["positive_or_negative"],
+            difficulty = form.data["difficulty"],
+            tags = form.data["tags"],
+            reset_counter = form.data["reset_counter"]
         )
         db.session.add(new_habit)
         db.session.commit()
@@ -75,7 +75,7 @@ def update_habit(habitId):
 @login_required
 def delete_habit(habitId):
     """
-    Deletes a habit
+    Deletes a habit based on its id
     """
 
     habit = Habit.query.get(habitId)
