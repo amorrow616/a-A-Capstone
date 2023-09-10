@@ -1,0 +1,25 @@
+.dailiesColumn {
+    flex: 1;
+}
+
+.habitsColumn {
+    flex: 1;
+}
+
+.innerColumns {
+    background-color: rgb(224, 222, 222);
+}
+
+.mainPageColumns {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.rewardsColumn {
+    flex: 1;
+}
+
+.todosColumn {
+    flex: 1;
+}

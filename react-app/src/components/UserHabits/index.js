@@ -19,7 +19,7 @@ export default function UserHabits() {
     return (
         <>
             {Object.values(habits).map((habit) => (
-                <li key={habit.id}>
+                <li key={habit.id} id="habitsList">
                     <div>{habit.title}</div>
                     <div>{habit.notes}</div>
                     <OpenModalButton

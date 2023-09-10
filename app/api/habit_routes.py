@@ -10,7 +10,7 @@ habit_routes = Blueprint('habits', __name__)
 @login_required
 def user_habits(userId):
     """
-    Query for a habit based on its id and return it in a dictionary
+    Query for all habits of specific user and return them in a dictionary
     """
     habits = Habit.query.filter(Habit.user_id == userId).all()
     return {'habits': [habit.to_dict() for habit in habits]}
