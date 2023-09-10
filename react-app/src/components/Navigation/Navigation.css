@@ -17,7 +17,11 @@
 }
 
 .profile-dropdown {
-  position: absolute;
+  position: fixed;
+  left: 85%;
+  background-color: white;
+  z-index: 1000;
+  list-style: none;
 }
 
 #loginButton {
@@ -31,6 +35,29 @@
 #loginButton:hover {
   background-color: rgb(141, 73, 155);
   border: solid rgb(141, 73, 155);
+}
+
+#logoutButton {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-left: none;
+  border-right: none;
+  background-color: white;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#logoutButton:hover {
+  text-decoration: underline;
+  color: rgb(124, 30, 136);
+  background-color: rgb(240, 224, 245);
+}
+
+#navGriffin {
+  margin-right: 8px;
+  font-size: 150%;
+  color: white;
+  display: inline-flex;
 }
 
 #navLinks {
@@ -47,4 +74,5 @@
   background-color: rgb(91, 13, 122);
   font-size: 200%;
   cursor: pointer;
+  margin-right: 25px;
 }

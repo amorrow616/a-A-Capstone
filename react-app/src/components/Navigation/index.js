@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { GiGriffinSymbol } from "react-icons/gi";
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -11,6 +12,7 @@ function Navigation({ isLoaded }) {
 		<>
 			<ul className="navigationBar">
 				<li>
+					<GiGriffinSymbol id="navGriffin" />
 					<NavLink exact to="/" className="homeLink">patternica</NavLink>
 				</li>
 				{!sessionUser ?

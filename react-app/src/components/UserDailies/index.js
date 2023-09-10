@@ -4,6 +4,7 @@ import OpenModalButton from '../OpenModalButton';
 import UpdateDaily from '../UpdateDaily';
 import DeleteDaily from '../DeleteDaily';
 import * as dailyActions from '../../store/dailies';
+import './UserDailies.css';
 
 export default function UserDailies() {
     const dispatch = useDispatch();
@@ -18,12 +19,12 @@ export default function UserDailies() {
     return (
         <>
             {Object.values(dailies).map((daily) => (
-                <li key={daily.id}>
+                <li key={daily.id} id="dailiesList">
                     <div>{daily.title}</div>
                     <div>{daily.notes}</div>
                     <OpenModalButton
                         modalComponent={<UpdateDaily daily={daily} />}
-                        buttonText={'Update daily'}
+                        className="updateButton"
                     />
                     <OpenModalButton
                         modalComponent={<DeleteDaily daily={daily} />}

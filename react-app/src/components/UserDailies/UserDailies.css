@@ -1,9 +1,9 @@
-#habitsList {
+#dailiesList {
     list-style: none;
     margin-bottom: 3px;
 }
 
-#habitsList:hover {
+#dailiesList:hover {
     border: 1px solid purple;
     box-shadow: 1px 3px 6px gray;
 }
