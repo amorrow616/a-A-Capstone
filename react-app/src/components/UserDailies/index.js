@@ -47,6 +47,7 @@ export default function UserDailies() {
                         <div className="visibleElement">
                             <div>{daily.title}</div>
                             <div>{daily.notes}</div>
+                            <div>{daily.checklist}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateDaily daily={daily} />}

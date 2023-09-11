@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import habitsReducer from './habits';
 import dailiesReducer from './dailies';
+import todosReducer from './todos';
 
 const rootReducer = combineReducers({
   session,
   habits: habitsReducer,
-  dailies: dailiesReducer
+  dailies: dailiesReducer,
+  todos: todosReducer
 });
 
 

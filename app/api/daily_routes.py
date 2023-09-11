@@ -22,8 +22,6 @@ def create_daily(userId):
     """
     Creates a daily linked to logged in user
     """
-
-    data = request.get_json()
     form = DailyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -49,6 +47,7 @@ def create_daily(userId):
         return form.errors
 
 @daily_routes.route('/daily/<int:dailyId>', methods=['PUT'])
+@login_required
 def update_daily(dailyId):
     """
     Updates a daily using the dailys id, returns the updated daily in a dictionary

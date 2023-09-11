@@ -21,7 +21,6 @@ def create_habit(userId):
     """
     Creates a habit linked to logged in user
     """
-    data = request.get_json()
     form = HabitForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -43,6 +42,7 @@ def create_habit(userId):
         return form.errors
 
 @habit_routes.route('/habit/<int:habitId>', methods=['PUT'])
+@login_required
 def update_habit(habitId):
     """
     Updates a habit using the habits id, returns updated habit in dictionary
