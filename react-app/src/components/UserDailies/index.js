@@ -20,16 +20,20 @@ export default function UserDailies() {
         <>
             {Object.values(dailies).map((daily) => (
                 <li key={daily.id} id="dailiesList">
-                    <div>{daily.title}</div>
-                    <div>{daily.notes}</div>
-                    <OpenModalButton
-                        modalComponent={<UpdateDaily daily={daily} />}
-                        className="updateButton"
-                    />
-                    <OpenModalButton
-                        modalComponent={<DeleteDaily daily={daily} />}
-                        buttonText={'Delete daily'}
-                    />
+                    <div className="eachElement">
+                        <div className="visibleElement">
+                            <div>{daily.title}</div>
+                            <div>{daily.notes}</div>
+                        </div>
+                        <OpenModalButton
+                            modalComponent={<UpdateDaily daily={daily} />}
+                            className={'updateButton'}
+                        />
+                        <OpenModalButton
+                            modalComponent={<DeleteDaily daily={daily} />}
+                            buttonText={'Delete daily'}
+                        />
+                    </div>
                 </li>
             ))}
         </>

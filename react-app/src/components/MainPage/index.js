@@ -3,19 +3,21 @@ import UserDailies from '../UserDailies';
 import CreateHabit from '../CreateHabit';
 import CreateDaily from '../CreateDaily';
 import OpenModalButton from '../OpenModalButton';
+import AddTask from '../AddTask';
 import './MainPage.css';
 
 export default function MainPage() {
     return (
         <>
-            <OpenModalButton
+            <AddTask />
+            {/* <OpenModalButton
                 modalComponent={<CreateHabit />}
                 buttonText={'Habit'}
             />
             <OpenModalButton
                 modalComponent={<CreateDaily />}
                 buttonText={'Daily'}
-            />
+            /> */}
             <div className="mainPageColumns">
                 <div className="habitsColumn">
                     <h2>Habits</h2>

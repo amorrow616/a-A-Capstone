@@ -47,7 +47,8 @@ export default function CreateDaily({ daily, formType }) {
         }
     }
 
-    const addCheckItem = () => {
+    const addCheckItem = (e) => {
+        e.preventDefault();
         if (checklist.length === 0) return;
         setChecklistItems([...checklistItems, checklist]);
         setChecklist('');

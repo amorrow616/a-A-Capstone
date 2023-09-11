@@ -20,16 +20,20 @@ export default function UserHabits() {
         <>
             {Object.values(habits).map((habit) => (
                 <li key={habit.id} id="habitsList">
-                    <div>{habit.title}</div>
-                    <div>{habit.notes}</div>
-                    <OpenModalButton
-                        modalComponent={<UpdateHabit habit={habit} />}
-                        buttonText={'Update habit'}
-                    />
-                    <OpenModalButton
-                        modalComponent={<DeleteHabit habit={habit} />}
-                        buttonText={'Delete habit'}
-                    />
+                    <div className="eachElement">
+                        <div className="visibleElement">
+                            <div>{habit.title}</div>
+                            <div>{habit.notes}</div>
+                        </div>
+                        <OpenModalButton
+                            modalComponent={<UpdateHabit habit={habit} />}
+                            className={'updateButton'}
+                        />
+                        <OpenModalButton
+                            modalComponent={<DeleteHabit habit={habit} />}
+                            buttonText={'Delete habit'}
+                        />
+                    </div >
                 </li>
             ))
             }
