@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import CreateHabit from "../CreateHabit";
 import CreateDaily from "../CreateDaily";
 import OpenModalButton from '../OpenModalButton';
@@ -11,7 +10,6 @@ import './AddTask.css';
 export default function AddTask() {
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
-    const user = useSelector((state) => state.session.user)
 
     const openMenu = () => {
         if (showMenu) return;

@@ -22,3 +22,13 @@
     border: 1px solid purple;
     box-shadow: 1px 3px 6px gray;
 }
+
+#dailyOneLine {
+    margin: 2%;
+    width: 94%;
+    height: 40px;
+    border: none;
+    background-color: rgb(206, 202, 202);
+    color: rgb(109, 105, 105);
+    font-weight: bolder;
+}
