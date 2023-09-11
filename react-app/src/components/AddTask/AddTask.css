@@ -1,0 +1,41 @@
+.addtask-dropdown {
+    position: fixed;
+    right: 3%;
+    top: 9.2%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px gray;
+    width: 110px;
+    z-index: 100;
+}
+
+.addtask-dropdown-hidden {
+    display: none;
+}
+
+.addTaskDropdownItems {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font-size: 100%;
+}
+
+.addTaskDropdownItems:hover {
+    background-color: rgb(206, 166, 238);
+    color: rgb(79, 19, 119);
+}
+
+#addTaskButton {
+    border: none;
+    background-color: purple;
+    color: white;
+    position: fixed;
+    right: 3%;
+    font-size: 110%;
+    padding: 3px 15px;
+    cursor: pointer;
+}
+
+#plusSign {
+    color: rgb(182, 139, 218);
+}

@@ -29,10 +29,6 @@ export default function UserDailies() {
                             modalComponent={<UpdateDaily daily={daily} />}
                             className={'updateButton'}
                         />
-                        <OpenModalButton
-                            modalComponent={<DeleteDaily daily={daily} />}
-                            buttonText={'Delete daily'}
-                        />
                     </div>
                 </li>
             ))}
