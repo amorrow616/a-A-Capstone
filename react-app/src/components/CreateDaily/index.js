@@ -92,10 +92,11 @@ export default function CreateDaily({ daily, formType }) {
                     <button onClick={addCheckItem}>Add</button>
                     <ul>
                         {checklistItems.map((item, index) => (
-                            <li key={index}>
+                            <div key={index}>
+                                <input value={item} type="checkbox" />
                                 {item}
                                 <button onClick={() => removeCheckItem(index)}>Remove</button>
-                            </li>
+                            </div>
                         ))}
                     </ul>
                 </label>
