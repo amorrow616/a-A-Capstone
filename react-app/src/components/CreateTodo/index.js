@@ -43,7 +43,7 @@ export default function CreateTodo({ todo, formType }) {
     return (
         <>
             {formType === 'Update Todo' ? <h1>Edit To Do</h1> : <h1>Create To Do</h1>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="createForms">
                 <label>
                     Title*
                     <input

@@ -10,7 +10,7 @@ export default function CreateDaily({ daily, formType }) {
     const [title, setTitle] = useState(formType === 'Update Daily' ? daily.title : '');
     const [notes, setNotes] = useState(formType === 'Update Daily' ? daily.notes : '');
     const [checklist, setChecklist] = useState(formType === 'Update Daily' ? daily.checklist : '');
-    const [checklistItems, setChecklistItems] = useState([]);
+    const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split('\n') : []) : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Daily' ? daily.difficulty : '');
     const [startDate, setStartDate] = useState(formType === 'Update Daily' ? daily.startDate : '');
     const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
@@ -61,9 +61,9 @@ export default function CreateDaily({ daily, formType }) {
     }
     return (
         <>
-            {formType === 'Update Daily' ? <h1>Edit Daily</h1> : <h1>Create Daily</h1>}
-            <form onSubmit={handleSubmit}>
-                <label>
+            {formType === 'Update Daily' ? <h1 className="upperForm">Edit Daily</h1> : <h1 className="upperForm">Create Daily</h1>}
+            <form onSubmit={handleSubmit} className="createForms">
+                <label className="upperForm">
                     Title*
                     <input
                         type='text'
@@ -72,7 +72,7 @@ export default function CreateDaily({ daily, formType }) {
                         placeholder='Add a title'
                     />
                 </label>
-                <label>
+                <label className="upperForm">
                     Notes
                     <input
                         type='text'
@@ -152,7 +152,7 @@ export default function CreateDaily({ daily, formType }) {
                     <option value='Creativity'>Creativity</option>
                 </select>
                 {formType === 'Update Daily' ? <button type='submit' disabled={title.length < 1}>Save</button> : <button type='submit' disabled={title.length < 1}>Create</button>}
-            </form>
+            </form >
         </>
     )
 }

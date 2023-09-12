@@ -43,7 +43,7 @@ export default function CreateHabit({ habit, formType }) {
     return (
         <>
             {formType === 'Update Habit' ? <h1>Edit Habit</h1> : <h1>Create Habit</h1>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="createForms">
                 <label>
                     Title*
                     <input

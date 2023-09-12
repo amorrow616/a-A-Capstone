@@ -16,6 +16,9 @@
 #dailiesList {
     list-style: none;
     margin-bottom: 3px;
+    background-color: white;
+    margin-right: 3%;
+    margin-left: 2%;
 }
 
 #dailiesList:hover {

@@ -1,3 +1,18 @@
 button:disabled {
     cursor: not-allowed;
 }
+
+.createForms {
+    display: flex;
+    flex-direction: column;
+}
+
+.uppperForm {
+    background-color: purple;
+}
+
+#modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
