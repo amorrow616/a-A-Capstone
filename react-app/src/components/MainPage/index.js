@@ -1,6 +1,7 @@
+import AddTask from '../AddTask';
 import UserHabits from '../UserHabits';
 import UserDailies from '../UserDailies';
-import AddTask from '../AddTask';
+import UserTodos from '../UserTodos';
 import './MainPage.css';
 
 export default function MainPage() {
@@ -23,7 +24,7 @@ export default function MainPage() {
                 <div className="todosColumn">
                     <h2>To Do's</h2>
                     <div className="innerColumns">
-                        <p>column for to do's</p>
+                        <UserTodos />
                     </div>
                 </div>
                 <div className="rewardsColumn">
