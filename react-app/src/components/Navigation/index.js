@@ -10,23 +10,26 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<>
-			<ul className="navigationBar">
-				<li>
+			<div className="navigationBar">
+				<div className="navLeft">
 					<GiGriffinSymbol id="navGriffin" />
 					<NavLink exact to="/" className="homeLink">patternica</NavLink>
-				</li>
-				{!sessionUser ?
-					<li>
-						<NavLink exact to="/signup" id="navLinks">Get Started</NavLink>
-					</li>
-					: ''}
+				</div>
+				<div>
+					<ul className="navLinks">
+						<li>
+							{!sessionUser ?
+								<NavLink exact to="/signup" id="getStarted">Get Started</NavLink>
+								: ''}
+						</li>
+						<li>{!sessionUser ? <NavLink exact to="/" id="learnMore">Learn More</NavLink> : ''}</li>
+					</ul>
+				</div>
 				{isLoaded && sessionUser ? (
-					<li>
-						<ProfileButton user={sessionUser} />
-					</li>
+					<ProfileButton user={sessionUser} />
 				) :
 					<NavLink exact to="/login" id="loginButton">Login</NavLink>}
-			</ul>
+			</div>
 		</>
 	);
 }
