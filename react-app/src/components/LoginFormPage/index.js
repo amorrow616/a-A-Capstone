@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
+import { GiGriffinSymbol } from "react-icons/gi";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -30,35 +31,39 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>patternica</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      <button onClick={demoUser}>Demo User</button>
-      <NavLink exact to="/signup" id="noAccount">Don't have a Patternica account? <b>Sign up.</b></NavLink>
+      <div className="loginForm">
+        <h1><GiGriffinSymbol id="signupGriffin" /> patternica</h1>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <label id="loginInputs">
+            Email
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder='Username'
+              required
+            />
+          </label>
+          <label id="loginInputs">
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Password'
+              required
+            />
+          </label>
+          <button type="submit" id="loginSubmit">Login</button>
+        </form>
+        <button onClick={demoUser} id="demoUser">Demo User</button>
+        <NavLink exact to="/signup" id="noAccount">Don't have a Patternica account? <b>Sign up.</b></NavLink>
+      </div>
     </>
   );
 }

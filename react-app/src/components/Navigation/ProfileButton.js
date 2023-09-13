@@ -4,6 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { AiOutlineUser } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
@@ -43,7 +44,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu} id="profileButton">
-        <i className="fas fa-user-circle" />
+        <AiOutlineUser />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (

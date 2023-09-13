@@ -31,7 +31,7 @@ function SignupFormPage() {
   return (
     <>
       <div className="signUpForm">
-        <h1><GiGriffinSymbol id="signupGriffin" /> Patternica</h1>
+        <h1><GiGriffinSymbol id="signupGriffin" /> patternica</h1>
         <form onSubmit={handleSubmit} id="signUpForm">
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}

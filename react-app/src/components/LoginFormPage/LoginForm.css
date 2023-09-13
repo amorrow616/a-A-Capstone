@@ -1,3 +1,50 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#demoUser {
+    border: none;
+    background-color: rgb(46, 192, 236);
+    color: white;
+    font-size: 100%;
+    padding: 8px 6px;
+    border-radius: 3px;
+    margin-bottom: 1%;
+    cursor: pointer;
+    margin-left: -1%;
+}
+
+#loginInputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+    width: 240%;
+    margin-left: -70%;
+}
+
+#loginInputs>input {
+    background-color: rgb(66, 9, 92);
+    color: white;
+    border: none;
+    height: 40px;
+}
+
+#loginSubmit {
+    border: none;
+    background-color: rgb(46, 192, 236);
+    color: white;
+    font-size: 100%;
+    padding: 8px 6px;
+    border-radius: 3px;
+    margin-left: 30%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
 #noAccount {
     text-decoration: none;
     color: white;
