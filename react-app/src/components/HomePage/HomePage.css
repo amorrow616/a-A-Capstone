@@ -1,0 +1,31 @@
+body {
+    background-image: url('../../images/topbackground.jpg');
+    background-size: 100%;
+}
+
+.homePageLeft {
+    margin-left: 20%;
+}
+
+.homePageP {
+    color: white;
+    font-size: large;
+}
+
+.homePageRight {
+    margin-right: 25%;
+}
+
+.homePageTopWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#homePageLeftTitle {
+    font-size: 300%;
+    color: white;
+}
+
+#homePageTopImg {
+    width: 357px;
+}

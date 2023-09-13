@@ -5,15 +5,15 @@
 .homeLink {
   text-decoration: none;
   color: white;
-  font-size: x-large;
+  font-size: xx-large;
 }
 
 .navigationBar {
   list-style-type: none;
-  background-color: rgb(91, 13, 122);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3%;
 }
 
 .profile-dropdown {
@@ -30,6 +30,7 @@
   text-decoration: none;
   border: solid rgb(145, 88, 197);
   padding: 5px;
+  margin-right: 4%;
 }
 
 #loginButton:hover {
@@ -55,9 +56,10 @@
 
 #navGriffin {
   margin-right: 8px;
-  font-size: 150%;
+  font-size: 180%;
   color: white;
   display: inline-flex;
+  margin-top: 2%;
 }
 
 #navLinks {

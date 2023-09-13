@@ -10,13 +10,15 @@ export default function CreateDaily({ daily, formType }) {
     const [title, setTitle] = useState(formType === 'Update Daily' ? daily.title : '');
     const [notes, setNotes] = useState(formType === 'Update Daily' ? daily.notes : '');
     const [checklist, setChecklist] = useState(formType === 'Update Daily' ? daily.checklist : '');
-    const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split('\n') : []) : []);
+    const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split(',') : []) : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Daily' ? daily.difficulty : '');
     const [startDate, setStartDate] = useState(formType === 'Update Daily' ? daily.startDate : '');
     const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
     const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
     const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
     const [tags, setTags] = useState(formType === 'Update Daily' ? daily.tags : '');
+    console.log(checklist)
+    console.log(checklistItems)
 
     const handleSubmit = async (e) => {
         e.preventDefault();

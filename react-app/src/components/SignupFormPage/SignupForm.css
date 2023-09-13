@@ -1,0 +1,42 @@
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+}
+
+#signupGriffin {
+    display: flex;
+    margin-left: 38%;
+}
+
+#signupInputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4%;
+}
+
+#signupInputs>input {
+    background-color: rgb(66, 9, 92);
+    color: white;
+    border: none;
+    height: 40px;
+}
+
+#signupSubmit {
+    border: none;
+    background-color: rgb(46, 192, 236);
+    color: white;
+    font-size: 100%;
+    padding: 8px 6px;
+    border-radius: 3px;
+    margin-left: 40%;
+    margin-bottom: 3%;
+}
+
+::placeholder {
+    color: rgb(165, 38, 224);
+}
