@@ -80,6 +80,7 @@ export default function HomePage() {
                                 required
                             />
                         </label>
+                        <p className="homePageP">By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</p>
                         <button type="submit" id="signupSubmitHome">Sign Up</button>
                     </form>
                 </div>
