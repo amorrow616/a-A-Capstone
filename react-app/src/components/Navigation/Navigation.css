@@ -2,6 +2,11 @@
   display: none;
 }
 
+.centerLinks {
+  margin-right: 1300px;
+  display: flex;
+}
+
 .homeLink {
   text-decoration: none;
   color: white;
@@ -15,6 +20,10 @@
   align-items: center;
   margin-bottom: 3%;
   margin-top: 2%;
+}
+
+.navLeft {
+  display: inline-flex;
 }
 
 .navLinks {
@@ -45,7 +54,8 @@
   text-decoration: none;
   border: solid rgb(145, 88, 197);
   padding: 5px;
-  margin-right: 4%;
+  position: fixed;
+  margin-left: 90%;
 }
 
 #loginButton:hover {
@@ -81,6 +91,8 @@
 #getStarted {
   color: rgb(199, 171, 199);
   text-decoration: none;
+  margin-right: 50px;
+  display: flex;
 }
 
 #getStarted:hover {
@@ -93,5 +105,4 @@
   background-image: url('../../images/topbackground.jpg');
   font-size: 200%;
   cursor: pointer;
-  margin-right: 25px;
 }

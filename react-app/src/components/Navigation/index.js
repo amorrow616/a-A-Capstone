@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
 					<GiGriffinSymbol id="navGriffin" />
 					<NavLink exact to="/" className="homeLink">patternica</NavLink>
 				</div>
-				<div>
+				<div className="centerLinks">
 					<ul className="navLinks">
 						<li>
 							{!sessionUser ?

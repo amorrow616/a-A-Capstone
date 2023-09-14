@@ -20,10 +20,14 @@
 }
 
 #signupInputs>input {
-    background-color: rgb(66, 9, 92);
+    background-color: rgb(86, 14, 119);
     color: white;
     border: none;
     height: 40px;
+}
+
+#signupInputs>input:hover {
+    background-color: rgb(61, 10, 82);
 }
 
 #signupSubmit {

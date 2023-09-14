@@ -7,6 +7,10 @@ body {
     margin: 0;
 }
 
+.homePageHeadings {
+    color: white;
+}
+
 .homePageLeft {
     margin-left: 20%;
 }
@@ -32,4 +36,17 @@ body {
 
 #homePageTopImg {
     width: 357px;
+}
+
+#signupSubmitHome {
+    border: none;
+    background-color: rgb(46, 192, 236);
+    color: white;
+    font-size: 100%;
+    padding: 8px 6px;
+    border-radius: 3px;
+    margin-bottom: 3%;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
 }
