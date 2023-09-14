@@ -7,8 +7,20 @@ body {
     margin: 0;
 }
 
+.centerHomePageImages {
+    width: 357px;
+}
+
+.homePageBigHeadings {
+    color: white;
+    font-size: 300%;
+}
+
 .homePageHeadings {
     color: white;
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
 }
 
 .homePageLeft {
@@ -18,6 +30,8 @@ body {
 .homePageP {
     color: white;
     font-size: large;
+    display: flex;
+    justify-content: center;
 }
 
 .homePageRight {
@@ -27,6 +41,12 @@ body {
 .homePageTopWrapper {
     display: flex;
     flex-direction: row;
+}
+
+#gamifyBlurb {
+    width: 30%;
+    margin-left: 35%;
+    text-align: center;
 }
 
 #homePageLeftTitle {
