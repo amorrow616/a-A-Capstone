@@ -10,9 +10,9 @@ def seed_dailies():
         checklist='Apply polish, let polish dry',
         difficulty='Easy',
         start_date=date(2023, 9, 9),
-        repeats='Weekly',
-        repeat_every=1,
-        repeat_on='We',
+        # repeats='Weekly',
+        # repeat_every=1,
+        # repeat_on='We',
         tags='Health + Wellness'
     )
     daily_two = Daily(
@@ -22,9 +22,9 @@ def seed_dailies():
         checklist='Take out old filter, put in new filter, test by running water',
         difficulty='Hard',
         start_date=date(2023, 9, 28),
-        repeats='Monthly',
-        repeat_every=2,
-        repeat_on='Day of the Month',
+        # repeats='Monthly',
+        # repeat_every=2,
+        # repeat_on='Day of the Month',
         tags='Health + Wellness'
     )
     daily_three = Daily(
@@ -34,8 +34,8 @@ def seed_dailies():
         checklist='Check with spouse, plan activity, profit',
         difficulty='Trivial',
         start_date=date(2023, 10, 5),
-        repeats='Daily',
-        repeat_every=1,
+        # repeats='Daily',
+        # repeat_every=1,
         tags='Work'
     )
 

@@ -33,9 +33,13 @@ function SignupFormPage() {
       <div className="signUpForm">
         <h1><GiGriffinSymbol id="signupGriffin" /> patternica</h1>
         <form onSubmit={handleSubmit} id="signUpForm">
-          <ul>
+          {/* <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
+          </ul> */}
+          {errors.map((error) => (
+            error.includes('username') ?
+              <p id="errorP">{error.slice(11)}</p> : ''
+          ))}
           <label id="signupInputs">
             Username
             <input
@@ -46,6 +50,10 @@ function SignupFormPage() {
               required
             />
           </label>
+          {errors.map((error) => (
+            error.includes('email') ?
+              <p id="errorP">{error.slice(8)}</p> : ''
+          ))}
           <label id="signupInputs">
             Email
             <input
@@ -56,6 +64,10 @@ function SignupFormPage() {
               required
             />
           </label>
+          {errors.map((error) => (
+            error.includes('password') ?
+              <p id="errorP">{error.slice(11)}</p> : ''
+          ))}
           <label id="signupInputs">
             Password
             <input
@@ -66,6 +78,7 @@ function SignupFormPage() {
               required
             />
           </label>
+          {password !== confirmPassword ? <p id="errorP">Confirm Password field must be the same as the Password field</p> : ''}
           <label id="signupInputs">
             Confirm Password
             <input

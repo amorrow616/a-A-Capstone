@@ -18,6 +18,13 @@
     margin-left: -1%;
 }
 
+#errorP {
+    color: rgb(255, 11, 11);
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 #loginInputs {
     display: flex;
     flex-direction: column;

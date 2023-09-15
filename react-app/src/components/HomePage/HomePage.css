@@ -107,6 +107,12 @@ body {
     margin: 0 auto;
 }
 
+#errorPHome {
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+
 #gamifyBlurb {
     width: 30%;
     margin-left: 35%;

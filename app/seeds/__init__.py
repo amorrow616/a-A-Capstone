@@ -26,12 +26,14 @@ def seed():
         undo_dailies()
         undo_avatars()
         undo_todos()
+        undo_rewards()
     seed_users()
     # Add other seed functions here
     seed_habits()
     seed_dailies()
     seed_avatars()
     seed_todos()
+    seed_rewards()
 
 
 # Creates the `flask seed undo` command

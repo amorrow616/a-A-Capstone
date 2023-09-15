@@ -6,7 +6,7 @@ def seed_habits():
         user_id=1,
         title='Chewing nails',
         notes='Want to stop chewing on my nails',
-        positive_or_negative=False,
+        positive_negative='Negative',
         difficulty='Medium',
         tags='Health + Wellness',
         reset_counter='Weekly'
@@ -15,7 +15,7 @@ def seed_habits():
         user_id=1,
         title='Drinking water',
         notes='Want to keep up my healthy water intake',
-        positive_or_negative=True,
+        positive_negative='Positive',
         difficulty='Easy',
         tags='Health + Wellness',
         reset_counter='Daily'
@@ -24,7 +24,7 @@ def seed_habits():
         user_id=1,
         title='Clocking out early',
         notes='Want to try and stay for my entire shift instead of going home early',
-        positive_or_negative=False,
+        positive_negative='Both',
         difficulty='Hard',
         tags='Work',
         reset_counter='Monthly'
