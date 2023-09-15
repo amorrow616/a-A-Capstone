@@ -2,7 +2,7 @@ import json
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import db, Todo
-from app.forms.todo_form import TodoForm
+from app.forms import TodoForm
 
 todo_routes = Blueprint('todos', __name__)
 

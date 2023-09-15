@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Habit(db.Model):
-    __tablename__ = 'habits'
+class Reward(db.Model):
+    __tablename__ = 'rewards'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -10,12 +10,11 @@ class Habit(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     title = db.Column(db.String(255), nullable=False)
     notes = db.Column(db.String(450))
-    positive_negative = db.Column(db.String(10))
-    difficulty = db.Column(db.String(20))
+    cost = db.Column(db.Integer)
     tags = db.Column(db.String(25))
-    reset_counter = db.Column(db.String(15))
-    # one user can have many habits
-    habit_user = db.relationship("User", back_populates='user_habit')
+
+    # one user can have many rewards
+    reward_user = db.relationship("User", back_populates='user_reward')
 
     def to_dict(self):
         return {
@@ -23,8 +22,6 @@ class Habit(db.Model):
             'user_id': self.user_id,
             'title': self.title,
             'notes': self.notes,
-            'positive_negative': self.positive_negative,
-            'difficulty': self.difficulty,
-            'tags': self.tags,
-            'reset_counter': self.reset_counter
+            'cost': self.cost,
+            'tags': self.tags
         }

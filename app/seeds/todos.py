@@ -13,7 +13,7 @@ def seed_todos():
         tags='Health + Wellness'
     )
     todo_two = Todo(
-        user_id=2,
+        user_id=1,
         title='Call repair man for water source',
         notes='Want to make sure water source is pure, crack needs to be repaired',
         checklist='Find correct phone number, schedule repair, be home for repair',
@@ -22,7 +22,7 @@ def seed_todos():
         tags='Health + Wellness'
     )
     todo_three = Todo(
-        user_id=3,
+        user_id=1,
         title='Look for a new job',
         notes='Want to check the job market, see if I can get a new offer',
         checklist='Update resume, send out resume, schedule interviews',

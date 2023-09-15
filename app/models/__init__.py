@@ -4,3 +4,4 @@ from .habit import Habit
 from .avatar import Avatar
 from .daily import Daily
 from .todo import Todo
+from .reward import Reward

@@ -2,7 +2,7 @@ import json
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import db, Habit
-from app.forms.habit_form import HabitForm
+from app.forms import HabitForm
 
 habit_routes = Blueprint('habits', __name__)
 
@@ -25,10 +25,10 @@ def create_habit(userId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_habit = Habit(
-            user_id=userId,
+            user_id = userId,
             title = form.data["title"],
             notes = form.data["notes"],
-            positive_or_negative = form.data["positive_or_negative"],
+            positive_or_negative = form.data["positive_negative"],
             difficulty = form.data["difficulty"],
             tags = form.data["tags"],
             reset_counter = form.data["reset_counter"]
@@ -55,14 +55,14 @@ def update_habit(habitId):
 
     title = data.get('title')
     notes = data.get('notes')
-    positive_or_negative = data.get('positive_or_negative')
+    positive_negative = data.get('positive_negative')
     difficulty = data.get('difficulty')
     tags = data.get('tags')
     reset_counter = data.get('reset_counter')
 
     habit.title = title
     habit.notes = notes
-    habit.positive_or_negative = positive_or_negative
+    habit.positive_negative = positive_negative
     habit.difficulty = difficulty
     habit.tags = tags
     habit.reset_counter = reset_counter
