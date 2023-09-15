@@ -10,7 +10,7 @@ export default function CreateTodo({ todo, formType }) {
     const [title, setTitle] = useState(formType === 'Update Todo' ? todo.title : '');
     const [notes, setNotes] = useState(formType === 'Update Todo' ? todo.notes : '');
     const [checklist, setChecklist] = useState(formType === 'Update Todo' ? todo.checklist : '');
-    const [checklistItems, setChecklistItems] = useState([]);
+    // const [checklistItems, setChecklistItems] = useState([]);
     const [difficulty, setDifficulty] = useState(formType === 'Update Todo' ? todo.difficulty : '');
     const [dueDate, setDueDate] = useState(formType === 'Update Todo' ? todo.dueDate : '');
     const [tags, setTags] = useState(formType === 'Update Todo' ? todo.tags : '');

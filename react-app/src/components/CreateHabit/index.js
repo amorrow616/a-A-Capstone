@@ -10,7 +10,7 @@ export default function CreateHabit({ habit, formType }) {
     const userId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState(formType === 'Update Habit' ? habit.title : '');
     const [notes, setNotes] = useState(formType === 'Update Habit' ? habit.notes : '');
-    const [positiveOrNegative, setPositiveOrNegative] = useState(formType === 'Update Habit' ? habit.positiveOrNegative : false);
+    const [positiveNegative, setPositiveNegative] = useState(formType === 'Update Habit' ? habit.positiveNegative : false);
     const [difficulty, setDifficulty] = useState(formType === 'Update Habit' ? habit.difficulty : '');
     const [tags, setTags] = useState(formType === 'Update Habit' ? habit.tags : '');
     const [resetCounter, setResetCounter] = useState(formType === 'Update Habit' ? habit.resetCounter : '');
@@ -20,7 +20,7 @@ export default function CreateHabit({ habit, formType }) {
         const newHabit = {
             title,
             notes,
-            positiveOrNegative,
+            positiveNegative,
             difficulty,
             tags,
             resetCounter
@@ -62,24 +62,22 @@ export default function CreateHabit({ habit, formType }) {
                         placeholder='Add notes'
                     />
                 </label>
-                <label>
-                    Positive
-                    <input
-                        type='radio'
-                        name="positiveornegative"
-                        onClick={(e) => setPositiveOrNegative(e.target.value)}
-                        value={positiveOrNegative}
-                    />
-                </label>
-                <label>
-                    Negative
-                    <input
-                        type='radio'
-                        name="positiveornegative"
-                        onClick={(e) => setPositiveOrNegative(e.target.value)}
-                        value={positiveOrNegative}
-                    />
-                </label>
+                <input
+                    type='checkbox'
+                    name='positive'
+                    id='positive'
+                    onChange={(e) => setPositiveNegative(e.target.value)}
+                    value={positiveNegative}
+                />
+                <label for="positive">Positive</label>
+                <input
+                    type='checkbox'
+                    name='negative'
+                    id='negative'
+                    onChange={(e) => setPositiveNegative(e.target.value)}
+                    value={positiveNegative}
+                />
+                <label for="negative">Negative</label>
                 Difficulty
                 <select
                     value={difficulty}

@@ -28,7 +28,7 @@ def create_habit(userId):
             user_id = userId,
             title = form.data["title"],
             notes = form.data["notes"],
-            positive_or_negative = form.data["positive_negative"],
+            positive_negative = form.data["positive_negative"],
             difficulty = form.data["difficulty"],
             tags = form.data["tags"],
             reset_counter = form.data["reset_counter"]

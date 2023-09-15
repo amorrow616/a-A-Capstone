@@ -30,8 +30,8 @@ class Daily(db.Model):
             'checklist': self.checklist,
             'difficulty': self.difficulty,
             'start_date': self.start_date,
-            'repeats': self.repeats,
-            'repeat_every': self.repeat_every,
-            'repeat_on': self.repeat_on,
+            # 'repeats': self.repeats,
+            # 'repeat_every': self.repeat_every,
+            # 'repeat_on': self.repeat_on,
             'tags': self.tags
         }

@@ -13,12 +13,10 @@ export default function CreateDaily({ daily, formType }) {
     const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split(',') : []) : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Daily' ? daily.difficulty : '');
     const [startDate, setStartDate] = useState(formType === 'Update Daily' ? daily.startDate : '');
-    const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
-    const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
-    const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
+    // const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
+    // const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
+    // const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
     const [tags, setTags] = useState(formType === 'Update Daily' ? daily.tags : '');
-    console.log(checklist)
-    console.log(checklistItems)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,9 +26,9 @@ export default function CreateDaily({ daily, formType }) {
             checklist,
             difficulty,
             startDate,
-            repeats,
-            repeatEvery,
-            repeatOn,
+            // repeats,
+            // repeatEvery,
+            // repeatOn,
             tags
         };
 
@@ -120,7 +118,7 @@ export default function CreateDaily({ daily, formType }) {
                         value={startDate}
                     />
                 </label>
-                <label>
+                {/* <label>
                     Repeats
                     <select
                         value={repeats}
@@ -131,8 +129,8 @@ export default function CreateDaily({ daily, formType }) {
                         <option value='Monthly'>Monthly</option>
                         <option value='Yearly'>Yearly</option>
                     </select>
-                </label>
-                <label>
+                </label> */}
+                {/* <label>
                     Repeat Every
                     <input
                         type='number'
@@ -140,7 +138,7 @@ export default function CreateDaily({ daily, formType }) {
                         value={repeatEvery}
                         placeholder='0'
                     />
-                </label>
+                </label> */}
                 Tags
                 <select
                     value={tags}
