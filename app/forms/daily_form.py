@@ -8,8 +8,8 @@ tag_choices = ['Work', 'Exercise', 'Health + Wellness', 'School', 'Teams', 'Chor
 
 class DailyForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(min=1, max=255, message='Please enter a title between 1 and 255 characters.')])
-    notes = StringField('Notes', validators=[Length(min=1, max=450, message='Please enter a note that is between 1 and 450 characters.')])
-    checklist = StringField('Checklist', validators=[Length(min=1, max=255, message='Please enter a checklist item between 1 and 255 characters.')])
+    notes = StringField('Notes', validators=[Length(max=450, message='Please enter a note that is less than 450 characters.')])
+    checklist = StringField('Checklist', validators=[Length(max=255, message='Please enter a checklist item less than 255 characters.')])
     difficulty = SelectField('Difficulty', choices=difficulties)
     start_date = DateField('Start Date', format='%Y-%m-%d')
     # repeats = StringField('Repeats', validators=[Length(max=20)])
