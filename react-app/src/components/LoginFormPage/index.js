@@ -34,18 +34,14 @@ function LoginFormPage() {
       <div className="loginForm">
         <h1><GiGriffinSymbol id="signupGriffin" /> patternica</h1>
         <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
+          {errors.length ? <p id="errorP">Invalid Credentials</p> : ''}
           <label id="loginInputs">
             Email
             <input
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder='Username'
+              placeholder='Email'
               required
             />
           </label>

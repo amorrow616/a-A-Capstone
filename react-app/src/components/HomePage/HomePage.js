@@ -41,9 +41,10 @@ export default function HomePage() {
                     <h3 className="homePageHeadings">Sign Up For Free</h3>
                     <p className="homePageP">Username must be 1 to 20 characters, containing only letters a to z, numbers 0 to 9, hyphens, or underscores, and cannot include and inappropriate terms.</p>
                     <form onSubmit={handleSubmit}>
-                        <ul>
-                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                        </ul>
+                        {errors.map((error) => (
+                            error.includes('username') ?
+                                <p id="errorPHome">{error.slice(11)}</p> : ''
+                        ))}
                         <label id="signupInputs">
                             <input
                                 type="text"
@@ -53,6 +54,10 @@ export default function HomePage() {
                                 required
                             />
                         </label>
+                        {errors.map((error) => (
+                            error.includes('email') ?
+                                <p id="errorPHome">{error.slice(8)}</p> : ''
+                        ))}
                         <label id="signupInputs">
                             <input
                                 type="text"
@@ -62,6 +67,10 @@ export default function HomePage() {
                                 required
                             />
                         </label>
+                        {errors.map((error) => (
+                            error.includes('password') ?
+                                <p id="errorPHome">{error.slice(11)}</p> : ''
+                        ))}
                         <label id="signupInputs">
                             <input
                                 type="password"
@@ -71,6 +80,7 @@ export default function HomePage() {
                                 required
                             />
                         </label>
+                        {password !== confirmPassword ? <p id="errorPHome">Confirm Password field must be the same as the Password field</p> : ''}
                         <label id="signupInputs">
                             <input
                                 type="password"
