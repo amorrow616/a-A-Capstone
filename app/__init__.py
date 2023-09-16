@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.habit_routes import habit_routes
 from .api.daily_routes import daily_routes
 from .api.todo_routes import todo_routes
+from .api.reward_routes import reward_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -34,6 +35,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(habit_routes, url_prefix='/api/habits')
 app.register_blueprint(daily_routes, url_prefix='/api/dailies')
 app.register_blueprint(todo_routes, url_prefix='/api/todos')
+app.register_blueprint(reward_routes, url_prefix='/api/rewards')
 db.init_app(app)
 Migrate(app, db)
 

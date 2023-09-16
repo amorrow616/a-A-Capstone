@@ -39,7 +39,7 @@ export default function HomePage() {
                 </div>
                 <div className="homePageRight">
                     <h3 className="homePageHeadings">Sign Up For Free</h3>
-                    <p className="homePageP">Username must be 1 to 20 characters, containing only letters a to z, numbers 0 to 9, hyphens, or underscores, and cannot include and inappropriate terms.</p>
+                    <p className="homePageP">Username must be 5 to 40 characters, containing only letters a to z, numbers 0 to 9, hyphens, or underscores, and cannot include and inappropriate terms.</p>
                     <form onSubmit={handleSubmit}>
                         {errors.map((error) => (
                             error.includes('username') ?

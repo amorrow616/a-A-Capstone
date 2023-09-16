@@ -4,12 +4,14 @@ import session from './session'
 import habitsReducer from './habits';
 import dailiesReducer from './dailies';
 import todosReducer from './todos';
+import rewardsReducer from './rewards';
 
 const rootReducer = combineReducers({
   session,
   habits: habitsReducer,
   dailies: dailiesReducer,
-  todos: todosReducer
+  todos: todosReducer,
+  rewards: rewardsReducer
 });
 
 

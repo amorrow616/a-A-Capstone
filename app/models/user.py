@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     user_todo = db.relationship("Todo", back_populates="todo_user")
     user_daily = db.relationship("Daily", back_populates="daily_user")
     user_avatar = db.relationship("Avatar", back_populates="avatar_user")
+    user_reward = db.relationship("Reward", back_populates="reward_user")
 
     @property
     def password(self):

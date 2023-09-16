@@ -16,7 +16,7 @@ def seed_dailies():
         tags='Health + Wellness'
     )
     daily_two = Daily(
-        user_id=2,
+        user_id=1,
         title='Change the water filter',
         notes='Change the water filter to keep water fresh and clean',
         checklist='Take out old filter, put in new filter, test by running water',
@@ -28,7 +28,7 @@ def seed_dailies():
         tags='Health + Wellness'
     )
     daily_three = Daily(
-        user_id=3,
+        user_id=1,
         title='Fun activity after work',
         notes='Have a fun activity planned after work to look forward to, can only do it by staying until shift end',
         checklist='Check with spouse, plan activity, profit',

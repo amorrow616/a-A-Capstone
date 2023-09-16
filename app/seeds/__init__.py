@@ -4,6 +4,7 @@ from .habits import seed_habits, undo_habits
 from .dailies import seed_dailies, undo_dailies
 from .avatars import seed_avatars, undo_avatars
 from .todos import seed_todos, undo_todos
+from .rewards import seed_rewards, undo_rewards
 
 from app.models.db import db, environment, SCHEMA
 
@@ -25,12 +26,14 @@ def seed():
         undo_dailies()
         undo_avatars()
         undo_todos()
+        undo_rewards()
     seed_users()
     # Add other seed functions here
     seed_habits()
     seed_dailies()
     seed_avatars()
     seed_todos()
+    seed_rewards()
 
 
 # Creates the `flask seed undo` command
@@ -42,3 +45,4 @@ def undo():
     undo_dailies()
     undo_avatars()
     undo_todos()
+    undo_rewards()

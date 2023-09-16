@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import CreateHabit from "../CreateHabit";
 import CreateDaily from "../CreateDaily";
 import CreateTodo from '../CreateTodo';
+import CreateReward from '../CreateReward';
 import OpenModalButton from '../OpenModalButton';
 import { HiPlus } from "react-icons/hi";
 import { VscCalendar } from "react-icons/vsc";
 import { PiPlusMinus } from "react-icons/pi";
 import { IoCheckboxOutline } from "react-icons/io5";
+import { GiChest } from "react-icons/gi";
 import './AddTask.css';
 
 export default function AddTask() {
@@ -67,6 +69,17 @@ export default function AddTask() {
                         buttonText={<>
                             <IoCheckboxOutline />
                             To Do
+                        </>}
+                        onItemClick={closeMenu}
+                        className="addTaskDropdownItems"
+                    />
+                </li>
+                <li>
+                    <OpenModalButton
+                        modalComponent={<CreateReward />}
+                        buttonText={<>
+                            <GiChest />
+                            Reward
                         </>}
                         onItemClick={closeMenu}
                         className="addTaskDropdownItems"
