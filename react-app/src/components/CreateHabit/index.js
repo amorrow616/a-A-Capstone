@@ -10,7 +10,7 @@ export default function CreateHabit({ habit, formType }) {
     const userId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState(formType === 'Update Habit' ? habit.title : '');
     const [notes, setNotes] = useState(formType === 'Update Habit' ? habit.notes : '');
-    const [positiveNegative, setPositiveNegative] = useState(formType === 'Update Habit' ? habit.positiveNegative : false);
+    const [positive, setPositive] = useState(formType === 'Update Habit' ? habit.positive : false);
     const [difficulty, setDifficulty] = useState(formType === 'Update Habit' ? habit.difficulty : '');
     const [tags, setTags] = useState(formType === 'Update Habit' ? habit.tags : '');
     const [resetCounter, setResetCounter] = useState(formType === 'Update Habit' ? habit.resetCounter : '');
