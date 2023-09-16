@@ -11,6 +11,7 @@ export default function CreateReward({ reward, formType }) {
     const [notes, setNotes] = useState(formType === 'Update Reward' ? reward.notes : '');
     const [cost, setCost] = useState(formType === 'Update Reward' ? reward.cost : 1);
     const [tags, setTags] = useState(formType === 'Update Reward' ? reward.tags : '');
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,17 +27,30 @@ export default function CreateReward({ reward, formType }) {
             return dispatch(returnFromThunk).then(async () => {
                 await dispatch(rewardActions.fetchRewards(userId));
                 closeModal();
+            }).catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) {
+                    setErrors(data.errors)
+                }
             })
         } else {
             const returnFromThunk = rewardActions.createReward(newReward, userId);
             return dispatch(returnFromThunk).then(async () => {
                 await dispatch(rewardActions.fetchRewards(userId));
                 closeModal();
+            }).catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) {
+                    setErrors(data.errors)
+                }
             })
         }
     }
     return (
         <>
+            <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             {formType === 'Update Reward' ? <h1>Edit Reward</h1> : <h1>Create Reward</h1>}
             <form onSubmit={handleSubmit} className="createForms">
                 <label>
@@ -67,6 +81,7 @@ export default function CreateReward({ reward, formType }) {
                 </label>
                 Tags
                 <select
+                    name='tags'
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}
                     placeholder='Add tags...'

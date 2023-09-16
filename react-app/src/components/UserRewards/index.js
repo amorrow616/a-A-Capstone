@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import UpdateReward from '../UpdateReward';
 import OpenModalButton from '../OpenModalButton';
 import * as rewardActions from '../../store/rewards';
 
@@ -46,10 +47,10 @@ export default function UserRewards() {
                             <div>{reward.title}</div>
                             <div>{reward.notes}</div>
                         </div>
-                        {/* <OpenModalButton
+                        <OpenModalButton
                             modalComponent={<UpdateReward reward={reward} />}
                             className={'updateButton'}
-                        /> */}
+                        />
                     </div >
                 </li>
             ))}

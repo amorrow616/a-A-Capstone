@@ -21,7 +21,7 @@ def create_habit(userId):
     """
     Creates a habit linked to logged in user
     """
-    form = HabitForm()
+    form = HabitForm(request.form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_habit = Habit(
@@ -33,13 +33,15 @@ def create_habit(userId):
             tags = form.data["tags"],
             reset_counter = form.data["reset_counter"]
         )
-        db.session.add(new_habit)
-        db.session.commit()
+        try:
+            db.session.add(new_habit)
+            db.session.commit()
+            return json.dumps({'habit': new_habit.to_dict()}), 201
+        except Exception as e:
+            db.session.rollback()
+            return json.dumps({'error': 'Failed to create habit.'}), 500
 
-        return json.dumps([{'habit': new_habit.to_dict()}]), 201
-
-    if form.errors:
-        return form.errors
+    return json.dumps({'errors': form.errors}), 400
 
 @habit_routes.route('/habit/<int:habitId>', methods=['PUT'])
 @login_required
