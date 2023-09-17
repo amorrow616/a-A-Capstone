@@ -17,8 +17,6 @@ export default function CreateDaily({ daily, formType }) {
     const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
     const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
     const [tags, setTags] = useState(formType === 'Update Daily' ? daily.tags : '');
-    console.log(checklist)
-    console.log(checklistItems)
 
     const handleSubmit = async (e) => {
         e.preventDefault();

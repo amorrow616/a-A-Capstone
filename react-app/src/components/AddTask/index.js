@@ -18,7 +18,6 @@ export default function AddTask() {
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
-        console.log('menu opened')
     }
 
     useEffect(() => {
