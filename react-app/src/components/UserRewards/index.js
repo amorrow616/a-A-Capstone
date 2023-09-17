@@ -12,6 +12,9 @@ export default function UserRewards() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (title.length < 1 || title.length > 255) {
+            return;
+        }
         const newReward = {
             title,
             cost: 10
@@ -29,6 +32,7 @@ export default function UserRewards() {
     if (!Object.values(rewards)) return null;
     return (
         <>
+            {title.length > 255 ? <p id="errorP">Title cannot be longer than 255 characters.</p> : ''}
             <form onSubmit={handleSubmit}>
                 <label>
                     <input

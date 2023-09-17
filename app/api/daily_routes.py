@@ -32,9 +32,9 @@ def create_daily(userId):
             checklist = form.data["checklist"],
             difficulty = form.data["difficulty"],
             start_date = form.data["start_date"],
-            repeats = form.data["repeats"],
-            repeat_every = form.data["repeat_every"],
-            repeat_on = form.data["repeat_on"],
+            # repeats = form.data["repeats"],
+            # repeat_every = form.data["repeat_every"],
+            # repeat_on = form.data["repeat_on"],
             tags = form.data["tags"]
         )
 
@@ -64,9 +64,9 @@ def update_daily(dailyId):
     checklist = data.get('checklist')
     difficulty = data.get('difficulty')
     start_date = data.get('start_date')
-    repeats = data.get('repeats')
-    repeat_every = data.get('repeat_every')
-    repeat_on = data.get('repeat_on')
+    # repeats = data.get('repeats')
+    # repeat_every = data.get('repeat_every')
+    # repeat_on = data.get('repeat_on')
     tags = data.get('tags')
 
     daily.title = title
@@ -74,9 +74,9 @@ def update_daily(dailyId):
     daily.checklist = checklist
     daily.difficulty = difficulty
     daily.start_date = start_date
-    daily.repeats = repeats
-    daily.repeat_every = repeat_every
-    daily.repeat_on = repeat_on
+    # daily.repeats = repeats
+    # daily.repeat_every = repeat_every
+    # daily.repeat_on = repeat_on
     daily.tags = tags
 
     db.session.commit()

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as rewardActions from '../../store/rewards';
@@ -11,7 +11,20 @@ export default function CreateReward({ reward, formType }) {
     const [notes, setNotes] = useState(formType === 'Update Reward' ? reward.notes : '');
     const [cost, setCost] = useState(formType === 'Update Reward' ? reward.cost : 1);
     const [tags, setTags] = useState(formType === 'Update Reward' ? reward.tags : '');
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const errors = {};
+
+        if (title.length > 255) {
+            errors.title = 'Title must be between 1 and 255 characters.'
+        }
+        if (notes && notes.length > 450) {
+            errors.notes = 'Notes must be less than 450 characters.'
+        }
+
+        setErrors(errors);
+    }, [title, notes]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,12 +61,10 @@ export default function CreateReward({ reward, formType }) {
     }
     return (
         <>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
             {formType === 'Update Reward' ? <h1>Edit Reward</h1> : <h1>Create Reward</h1>}
             <form onSubmit={handleSubmit} className="createForms">
                 <label>
+                    {errors.title && <p id="errorP">{errors.title}</p>}
                     Title*
                     <input
                         type='text'
@@ -63,6 +74,7 @@ export default function CreateReward({ reward, formType }) {
                     />
                 </label>
                 <label>
+                    {errors.notes && <p id="errorP">{errors.notes}</p>}
                     Notes
                     <input
                         type='text'
@@ -94,7 +106,7 @@ export default function CreateReward({ reward, formType }) {
                     <option value='Chores'>Chores</option>
                     <option value='Creativity'>Creativity</option>
                 </select>
-                {formType === 'Update Reward' ? <button type='submit' disabled={title.length < 1}>Save</button> : <button type='submit' disabled={title.length < 1}>Create</button>}
+                {formType === 'Update Reward' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Create</button>}
             </form>
         </>
     )

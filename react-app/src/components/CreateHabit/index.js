@@ -19,7 +19,7 @@ export default function CreateHabit({ habit, formType }) {
     useEffect(() => {
         const errors = {};
 
-        if (title.length < 1 || title.length > 255) {
+        if (title.length > 255) {
             errors.title = 'Title must be between 1 and 255 characters.'
         }
         if (notes && notes.length > 450) {
@@ -27,7 +27,7 @@ export default function CreateHabit({ habit, formType }) {
         }
 
         setErrors(errors);
-    }, [title, notes])
+    }, [title, notes]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,8 +58,8 @@ export default function CreateHabit({ habit, formType }) {
             {formType === 'Update Habit' ? <h1>Edit Habit</h1> : <h1>Create Habit</h1>}
             <form onSubmit={handleSubmit} className="createForms">
                 <label>
-                    Title*
                     {errors.title && <p id="errorP">{errors.title}</p>}
+                    Title*
                     <input
                         type='text'
                         onChange={(e) => setTitle(e.target.value)}

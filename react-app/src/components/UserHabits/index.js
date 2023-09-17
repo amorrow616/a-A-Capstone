@@ -10,12 +10,10 @@ export default function UserHabits() {
     const habits = useSelector((state) => state.habits.allHabits);
     const sessionUserId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState('');
-    const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (title.length < 1 || title.length > 255) {
-            setErrors(['Title must be between 1 and 255 characters.']);
             return;
         }
         const newHabit = {
@@ -36,7 +34,7 @@ export default function UserHabits() {
     if (!Object.values(habits)) return null;
     return (
         <>
-            {title.length > 455 ? <p id="errorP">Title cannot be longer than 455 characters.</p> : ''}
+            {title.length > 255 ? <p id="errorP">Title cannot be longer than 255 characters.</p> : ''}
             <form onSubmit={handleSubmit}>
                 <label>
                     <input

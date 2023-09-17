@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as dailyActions from '../../store/dailies';
@@ -13,10 +13,24 @@ export default function CreateDaily({ daily, formType }) {
     const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split(',') : []) : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Daily' ? daily.difficulty : '');
     const [startDate, setStartDate] = useState(formType === 'Update Daily' ? daily.startDate : '');
-    const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
-    const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
-    const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
+    // const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
+    // const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
+    // const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
     const [tags, setTags] = useState(formType === 'Update Daily' ? daily.tags : '');
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const errors = {};
+
+        if (title.length > 255) {
+            errors.title = 'Title must be between 1 and 255 characters.'
+        }
+        if (notes && notes.length > 450) {
+            errors.notes = 'Notes must be less than 450 characters.'
+        }
+
+        setErrors(errors);
+    }, [title, notes]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,9 +40,9 @@ export default function CreateDaily({ daily, formType }) {
             checklist,
             difficulty,
             startDate,
-            repeats,
-            repeatEvery,
-            repeatOn,
+            // repeats,
+            // repeatEvery,
+            // repeatOn,
             tags
         };
 
@@ -64,6 +78,7 @@ export default function CreateDaily({ daily, formType }) {
             {formType === 'Update Daily' ? <h1 className="upperForm">Edit Daily</h1> : <h1 className="upperForm">Create Daily</h1>}
             <form onSubmit={handleSubmit} className="createForms">
                 <label className="upperForm">
+                    {errors.title && <p id="errorP">{errors.title}</p>}
                     Title*
                     <input
                         type='text'
@@ -73,6 +88,7 @@ export default function CreateDaily({ daily, formType }) {
                     />
                 </label>
                 <label className="upperForm">
+                    {errors.notes && <p id="errorP">{errors.notes}</p>}
                     Notes
                     <input
                         type='text'
@@ -118,7 +134,7 @@ export default function CreateDaily({ daily, formType }) {
                         value={startDate}
                     />
                 </label>
-                <label>
+                {/* <label>
                     Repeats
                     <select
                         value={repeats}
@@ -138,7 +154,7 @@ export default function CreateDaily({ daily, formType }) {
                         value={repeatEvery}
                         placeholder='0'
                     />
-                </label>
+                </label> */}
                 Tags
                 <select
                     value={tags}
@@ -152,7 +168,7 @@ export default function CreateDaily({ daily, formType }) {
                     <option value='Chores'>Chores</option>
                     <option value='Creativity'>Creativity</option>
                 </select>
-                {formType === 'Update Daily' ? <button type='submit' disabled={title.length < 1}>Save</button> : <button type='submit' disabled={title.length < 1}>Create</button>}
+                {formType === 'Update Daily' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Create</button>}
             </form >
         </>
     )

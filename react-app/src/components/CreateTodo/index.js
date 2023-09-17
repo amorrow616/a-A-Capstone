@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as todoActions from '../../store/todos';
@@ -14,6 +14,20 @@ export default function CreateTodo({ todo, formType }) {
     const [difficulty, setDifficulty] = useState(formType === 'Update Todo' ? todo.difficulty : '');
     const [dueDate, setDueDate] = useState(formType === 'Update Todo' ? todo.dueDate : '');
     const [tags, setTags] = useState(formType === 'Update Todo' ? todo.tags : '');
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const errors = {};
+
+        if (title.length > 255) {
+            errors.title = 'Title must be between 1 and 255 characters.'
+        }
+        if (notes && notes.length > 450) {
+            errors.notes = 'Notes must be less than 450 characters.'
+        }
+
+        setErrors(errors);
+    }, [title, notes]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,6 +59,7 @@ export default function CreateTodo({ todo, formType }) {
             {formType === 'Update Todo' ? <h1>Edit To Do</h1> : <h1>Create To Do</h1>}
             <form onSubmit={handleSubmit} className="createForms">
                 <label>
+                    {errors.title && <p id="errorP">{errors.title}</p>}
                     Title*
                     <input
                         type='text'
@@ -54,6 +69,7 @@ export default function CreateTodo({ todo, formType }) {
                     />
                 </label>
                 <label>
+                    {errors.notes && <p id="errorP">{errors.notes}</p>}
                     Notes
                     <input
                         type='text'
@@ -102,7 +118,7 @@ export default function CreateTodo({ todo, formType }) {
                     <option value='Chores'>Chores</option>
                     <option value='Creativity'>Creativity</option>
                 </select>
-                {formType === 'Update Todo' ? <button type='submit' disabled={title.length < 1}>Save</button> : <button type='submit' disabled={title.length < 1}>Create</button>}
+                {formType === 'Update Todo' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Create</button>}
             </form>
         </>
     )

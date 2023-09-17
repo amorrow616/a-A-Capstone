@@ -14,9 +14,9 @@ class Daily(db.Model):
     checklist = db.Column(db.String(255))
     difficulty = db.Column(db.String(20))
     start_date = db.Column(db.Date)
-    repeats = db.Column(db.String(20))
-    repeat_every = db.Column(db.Integer)
-    repeat_on = db.Column(db.String(50))
+    # repeats = db.Column(db.String(20))
+    # repeat_every = db.Column(db.Integer)
+    # repeat_on = db.Column(db.String(50))
     tags = db.Column(db.String(25))
     # one user can have many dailies
     daily_user = db.relationship("User", back_populates="user_daily")
@@ -30,8 +30,8 @@ class Daily(db.Model):
             'checklist': self.checklist,
             'difficulty': self.difficulty,
             'start_date': self.start_date,
-            'repeats': self.repeats,
-            'repeat_every': self.repeat_every,
-            'repeat_on': self.repeat_on,
+            # 'repeats': self.repeats,
+            # 'repeat_every': self.repeat_every,
+            # 'repeat_on': self.repeat_on,
             'tags': self.tags
         }
