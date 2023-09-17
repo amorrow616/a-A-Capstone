@@ -10,12 +10,20 @@ export default function UserHabits() {
     const habits = useSelector((state) => state.habits.allHabits);
     const sessionUserId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState('');
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (title.length < 1 || title.length > 255) {
+            setErrors(['Title must be between 1 and 255 characters.']);
+            return;
+        }
+
         const newHabit = {
             title
         }
+
         const returnFromThunk = habitActions.createHabit(newHabit, sessionUserId);
         return dispatch(returnFromThunk).then(async () => {
             await dispatch(habitActions.fetchHabits(sessionUserId));
@@ -47,6 +55,7 @@ export default function UserHabits() {
                         <div className="visibleElement">
                             <div>{habit.title}</div>
                             <div>{habit.notes}</div>
+                            <div>{habit.tags}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateHabit habit={habit} />}

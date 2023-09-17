@@ -30,8 +30,7 @@ def create_habit(userId):
             notes = form.data["notes"],
             positive_or_negative = form.data["positive_or_negative"],
             difficulty = form.data["difficulty"],
-            tags = form.data["tags"],
-            reset_counter = form.data["reset_counter"]
+            tags = form.data["tags"]
         )
         db.session.add(new_habit)
         db.session.commit()
@@ -58,14 +57,12 @@ def update_habit(habitId):
     positive_or_negative = data.get('positive_or_negative')
     difficulty = data.get('difficulty')
     tags = data.get('tags')
-    reset_counter = data.get('reset_counter')
 
     habit.title = title
     habit.notes = notes
     habit.positive_or_negative = positive_or_negative
     habit.difficulty = difficulty
     habit.tags = tags
-    habit.reset_counter = reset_counter
 
     db.session.commit()
 

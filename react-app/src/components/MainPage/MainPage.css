@@ -8,14 +8,16 @@
 
 .innerColumns {
     background-color: rgb(224, 222, 222);
-    height: 200%;
+    height: 600px;
 }
 
 .mainPageColumns {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 1%;
     margin-top: 200px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .rewardsColumn {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as habitActions from '../../store/habits';
@@ -10,10 +10,23 @@ export default function CreateHabit({ habit, formType }) {
     const userId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState(formType === 'Update Habit' ? habit.title : '');
     const [notes, setNotes] = useState(formType === 'Update Habit' ? habit.notes : '');
-    const [positiveOrNegative, setPositiveOrNegative] = useState(formType === 'Update Habit' ? habit.positiveOrNegative : false);
+    const [positiveOrNegative, setPositiveOrNegative] = useState(formType === 'Update Habit' ? habit.positiveOrNegative : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Habit' ? habit.difficulty : '');
     const [tags, setTags] = useState(formType === 'Update Habit' ? habit.tags : '');
-    const [resetCounter, setResetCounter] = useState(formType === 'Update Habit' ? habit.resetCounter : '');
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const errors = {};
+
+        if (title.length < 1 || title.length > 255) {
+            errors.title = 'Title must be between 1 and 255 characters.'
+        }
+        if (notes.length > 450) {
+            errors.notes = 'Notes must be less than 450 characters.'
+        }
+
+        setErrors(errors);
+    }, [title, notes])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,8 +35,7 @@ export default function CreateHabit({ habit, formType }) {
             notes,
             positiveOrNegative,
             difficulty,
-            tags,
-            resetCounter
+            tags
         };
 
         if (formType === 'Update Habit') {
@@ -34,10 +46,9 @@ export default function CreateHabit({ habit, formType }) {
             });
         } else {
             const returnFromThunk = habitActions.createHabit(newHabit, userId);
-            return dispatch(returnFromThunk).then(async () => {
-                await dispatch(habitActions.fetchHabits(userId));
-                closeModal();
-            });
+            await dispatch(returnFromThunk);
+            await dispatch(habitActions.fetchHabits(userId));
+            closeModal();
         }
     }
     return (
@@ -46,6 +57,7 @@ export default function CreateHabit({ habit, formType }) {
             <form onSubmit={handleSubmit} className="createForms">
                 <label>
                     Title*
+                    {errors.title && <p id="errorP">{errors.title}</p>}
                     <input
                         type='text'
                         onChange={(e) => setTitle(e.target.value)}
@@ -54,6 +66,7 @@ export default function CreateHabit({ habit, formType }) {
                     />
                 </label>
                 <label>
+                    {errors.notes && <p id="errorP">{errors.notes}</p>}
                     Notes
                     <input
                         type='text'
@@ -62,24 +75,22 @@ export default function CreateHabit({ habit, formType }) {
                         placeholder='Add notes'
                     />
                 </label>
-                <label>
-                    Positive
-                    <input
-                        type='radio'
-                        name="positiveornegative"
-                        onClick={(e) => setPositiveOrNegative(e.target.value)}
-                        value={positiveOrNegative}
-                    />
-                </label>
-                <label>
-                    Negative
-                    <input
-                        type='radio'
-                        name="positiveornegative"
-                        onClick={(e) => setPositiveOrNegative(e.target.value)}
-                        value={positiveOrNegative}
-                    />
-                </label>
+                <label for="positive">Positive</label>
+                <input
+                    type='checkbox'
+                    name='positive'
+                    id='positive'
+                    onChange={(e) => setPositiveOrNegative(e.target.value)}
+                    value={positiveOrNegative}
+                />
+                <label for="negative">Negative</label>
+                <input
+                    type='checkbox'
+                    name='negative'
+                    id='negative'
+                    onChange={(e) => setPositiveOrNegative(e.target.value)}
+                    value={positiveOrNegative}
+                />
                 Difficulty
                 <select
                     value={difficulty}
@@ -103,16 +114,7 @@ export default function CreateHabit({ habit, formType }) {
                     <option value='Chores'>Chores</option>
                     <option value='Creativity'>Creativity</option>
                 </select>
-                Reset Counter
-                <select
-                    value={resetCounter}
-                    onChange={(e) => setResetCounter(e.target.value)}
-                >
-                    <option value='Daily'>Daily</option>
-                    <option value='Weekly'>Weekly</option>
-                    <option value='Monthly'>Monthly</option>
-                </select>
-                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1}>Save</button> : <button type='submit' disabled={title.length < 1}>Create</button>}
+                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || notes.length > 450}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || notes.length > 450}>Create</button>}
             </form>
         </>
     )
