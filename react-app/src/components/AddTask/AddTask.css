@@ -1,13 +1,15 @@
 .addtask-dropdown {
     position: fixed;
-    right: 3%;
-    top: 9.2%;
+    right: 0;
+    margin-right: 3%;
+    margin-top: 9%;
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 5px gray;
-    width: 110px;
+    width: 8%;
     z-index: 100;
     list-style: none;
+    background-color: white;
 }
 
 .addtask-dropdown-hidden {
@@ -19,6 +21,11 @@
     cursor: pointer;
     background-color: white;
     font-size: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 3%;
+    margin-left: 0%;
 }
 
 .addTaskDropdownItems:hover {
@@ -30,8 +37,10 @@
     border: none;
     background-color: purple;
     color: white;
-    position: fixed;
-    right: 3%;
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+    margin-top: 7%;
     font-size: 110%;
     padding: 3px 15px;
     cursor: pointer;

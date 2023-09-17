@@ -46,14 +46,14 @@ function ProfileButton({ user }) {
       <button onClick={openMenu} id="profileButton">
         <AiOutlineUser />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+            <div id="profileDropInfo">Hi {user.username}!</div>
+            <div id="profileDropInfo">{user.email}</div>
+            <div>
               <button onClick={handleLogout} id="logoutButton">Log Out</button>
-            </li>
+            </div>
           </>
         ) : (
           <>
@@ -70,7 +70,7 @@ function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </>
   );
 }
