@@ -24,17 +24,12 @@ def create_reward(userId):
     form = RewardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if "cost" not in form.data:
-        default_cost = 10
-    else:
-        default_cost = form.data["cost"]
-
     if form.validate_on_submit():
         new_reward = Reward(
             user_id = userId,
             title = form.data["title"],
             notes = form.data["notes"],
-            cost = default_cost,
+            cost = form.data["cost"],
             tags = form.data["tags"]
         )
         db.session.add(new_reward)

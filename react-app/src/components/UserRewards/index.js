@@ -13,7 +13,8 @@ export default function UserRewards() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newReward = {
-            title
+            title,
+            cost: 10
         }
         const returnFromThunk = rewardActions.createReward(newReward, userId);
         await dispatch(returnFromThunk);
