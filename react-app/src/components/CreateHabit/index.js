@@ -10,7 +10,8 @@ export default function CreateHabit({ habit, formType }) {
     const userId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState(formType === 'Update Habit' ? habit.title : '');
     const [notes, setNotes] = useState(formType === 'Update Habit' ? habit.notes : '');
-    const [positiveOrNegative, setPositiveOrNegative] = useState(formType === 'Update Habit' ? habit.positiveOrNegative : []);
+    const [positive, setPositive] = useState(formType === 'Update Habit' ? habit.positive : false);
+    const [negative, setNegative] = useState(formType === 'Update Habit' ? habit.negative : false);
     const [difficulty, setDifficulty] = useState(formType === 'Update Habit' ? habit.difficulty : '');
     const [tags, setTags] = useState(formType === 'Update Habit' ? habit.tags : '');
     const [errors, setErrors] = useState({});
@@ -21,7 +22,7 @@ export default function CreateHabit({ habit, formType }) {
         if (title.length < 1 || title.length > 255) {
             errors.title = 'Title must be between 1 and 255 characters.'
         }
-        if (notes.length > 450) {
+        if (notes && notes.length > 450) {
             errors.notes = 'Notes must be less than 450 characters.'
         }
 
@@ -33,7 +34,8 @@ export default function CreateHabit({ habit, formType }) {
         const newHabit = {
             title,
             notes,
-            positiveOrNegative,
+            positive,
+            negative,
             difficulty,
             tags
         };
@@ -80,16 +82,18 @@ export default function CreateHabit({ habit, formType }) {
                     type='checkbox'
                     name='positive'
                     id='positive'
-                    onChange={(e) => setPositiveOrNegative(e.target.value)}
-                    value={positiveOrNegative}
+                    onChange={() => setPositive(!positive)}
+                    value={positive}
+                    checked={positive}
                 />
                 <label for="negative">Negative</label>
                 <input
                     type='checkbox'
                     name='negative'
                     id='negative'
-                    onChange={(e) => setPositiveOrNegative(e.target.value)}
-                    value={positiveOrNegative}
+                    onChange={() => setNegative(!negative)}
+                    value={negative}
+                    checked={negative}
                 />
                 Difficulty
                 <select
@@ -114,7 +118,7 @@ export default function CreateHabit({ habit, formType }) {
                     <option value='Chores'>Chores</option>
                     <option value='Creativity'>Creativity</option>
                 </select>
-                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || notes.length > 450}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || notes.length > 450}>Create</button>}
+                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Create</button>}
             </form>
         </>
     )
