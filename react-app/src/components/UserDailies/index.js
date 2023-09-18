@@ -13,6 +13,9 @@ export default function UserDailies() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (title.length < 1 || title.length > 255) {
+            return;
+        }
         const newDaily = {
             title
         }
@@ -30,6 +33,7 @@ export default function UserDailies() {
     if (!Object.values(dailies)) return null;
     return (
         <>
+            {title.length > 255 ? <p id="errorP">Title cannot be longer than 255 characters.</p> : ''}
             <form onSubmit={handleSubmit}>
                 <label>
                     <input
@@ -45,9 +49,9 @@ export default function UserDailies() {
                 <li key={daily.id} id="dailiesList">
                     <div className="eachElement">
                         <div className="visibleElement">
-                            <div>{daily.title}</div>
+                            <div className="formTitle">{daily.title}</div>
                             <div>{daily.notes}</div>
-                            <div>{daily.checklist}</div>
+                            {/* <div>{daily.checklist}</div> */}
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateDaily daily={daily} />}

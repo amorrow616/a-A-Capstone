@@ -13,6 +13,9 @@ export default function UserTodos() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (title.length < 1 || title.length > 255) {
+            return;
+        }
         const newTodo = {
             title
         }
@@ -30,6 +33,7 @@ export default function UserTodos() {
     if (!Object.values(todos)) return null;
     return (
         <>
+            {title.length > 255 ? <p id="errorP">Title cannot be longer than 255 characters.</p> : ''}
             <form onSubmit={handleSubmit}>
                 <label>
                     <input
@@ -45,9 +49,9 @@ export default function UserTodos() {
                 <li key={todo.id} id="dailiesList">
                     <div className="eachElement">
                         <div className="visibleElement">
-                            <div>{todo.title}</div>
+                            <div className="formTitle">{todo.title}</div>
                             <div>{todo.notes}</div>
-                            <div>{todo.checklist}</div>
+                            {/* <div>{todo.checklist}</div> */}
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateTodo todo={todo} />}

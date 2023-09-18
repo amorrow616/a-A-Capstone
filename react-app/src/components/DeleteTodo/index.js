@@ -15,11 +15,11 @@ export default function DeleteTodo({ todo }) {
     }
     return (
         <>
-            <div>
-                <h1>Confirm Delete</h1>
-                <h2>Are you sure you want to delete this to do?</h2>
-                <button onClick={(e) => todoDelete(e, todoId)} id='deleteButton'>Yes (delete todo)</button>
-                <button onClick={closeModal} id='dontDeleteButton'>No (keep todo)</button>
+            <div className="deleteModal">
+                <h1 id='deleteSpotHead'>Confirm Delete</h1>
+                <h2 id='deleteSpotBlurb'>Are you sure you want to delete this to do?</h2>
+                <button onClick={(e) => todoDelete(e, todoId)} id='deleteButton'>Yes (delete to do)</button>
+                <button onClick={closeModal} id='dontDeleteButton'>No (keep to do)</button>
             </div>
         </>
     )

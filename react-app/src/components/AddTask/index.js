@@ -18,7 +18,6 @@ export default function AddTask() {
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
-        console.log('menu opened')
     }
 
     useEffect(() => {
@@ -40,52 +39,44 @@ export default function AddTask() {
     return (
         <>
             <button onClick={openMenu} id="addTaskButton"><HiPlus id="plusSign" />Add Task</button>
-            <ul className={ulClassName} ref={ulRef}>
-                <li>
-                    <OpenModalButton
-                        modalComponent={<CreateHabit />}
-                        buttonText={<>
-                            <PiPlusMinus />
-                            Habit
-                        </>}
-                        onItemClick={closeMenu}
-                        className="addTaskDropdownItems"
-                    />
-                </li>
-                <li>
-                    <OpenModalButton
-                        modalComponent={<CreateDaily />}
-                        buttonText={<>
-                            <VscCalendar />
-                            Daily
-                        </>}
-                        onItemClick={closeMenu}
-                        className="addTaskDropdownItems"
-                    />
-                </li>
-                <li>
-                    <OpenModalButton
-                        modalComponent={<CreateTodo />}
-                        buttonText={<>
-                            <IoCheckboxOutline />
-                            To Do
-                        </>}
-                        onItemClick={closeMenu}
-                        className="addTaskDropdownItems"
-                    />
-                </li>
-                <li>
-                    <OpenModalButton
-                        modalComponent={<CreateReward />}
-                        buttonText={<>
-                            <GiChest />
-                            Reward
-                        </>}
-                        onItemClick={closeMenu}
-                        className="addTaskDropdownItems"
-                    />
-                </li>
-            </ul>
+            <div className={ulClassName} ref={ulRef}>
+                <OpenModalButton
+                    modalComponent={<CreateHabit />}
+                    buttonText={<>
+                        <PiPlusMinus />
+                        Habit
+                    </>}
+                    onItemClick={closeMenu}
+                    className="addTaskDropdownItems"
+                />
+                <OpenModalButton
+                    modalComponent={<CreateDaily />}
+                    buttonText={<>
+                        <VscCalendar />
+                        Daily
+                    </>}
+                    onItemClick={closeMenu}
+                    className="addTaskDropdownItems"
+                />
+                <OpenModalButton
+                    modalComponent={<CreateTodo />}
+                    buttonText={<>
+                        <IoCheckboxOutline />
+                        To Do
+                    </>}
+                    onItemClick={closeMenu}
+                    className="addTaskDropdownItems"
+                />
+                <OpenModalButton
+                    modalComponent={<CreateReward />}
+                    buttonText={<>
+                        <GiChest />
+                        Reward
+                    </>}
+                    onItemClick={closeMenu}
+                    className="addTaskDropdownItems"
+                />
+            </div>
         </>
     )
 }

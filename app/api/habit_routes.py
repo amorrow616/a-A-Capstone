@@ -28,7 +28,8 @@ def create_habit(userId):
             user_id=userId,
             title = form.data["title"],
             notes = form.data["notes"],
-            positive_or_negative = form.data["positive_or_negative"],
+            positive = form.data["positive"],
+            negative = form.data["negative"],
             difficulty = form.data["difficulty"],
             tags = form.data["tags"]
         )
@@ -54,13 +55,15 @@ def update_habit(habitId):
 
     title = data.get('title')
     notes = data.get('notes')
-    positive_or_negative = data.get('positive_or_negative')
+    positive = data.get('positive')
+    negative = data.get('negative')
     difficulty = data.get('difficulty')
     tags = data.get('tags')
 
     habit.title = title
     habit.notes = notes
-    habit.positive_or_negative = positive_or_negative
+    habit.positive = positive
+    habit.negative = negative
     habit.difficulty = difficulty
     habit.tags = tags
 

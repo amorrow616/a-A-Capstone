@@ -117,7 +117,7 @@ export default function HomePage() {
                 </div>
             </div>
             <BiChevronsDown className="downArrows" />
-            <h2 className="homePageHeadings">Players Use Patternica to Improve</h2>
+            <h2 className="homePageBigHeadings">Players Use Patternica to Improve</h2>
             <div id="middlePageColumns">
                 <div className="middleColumnOne">
                     <img src="https://habitica.com/static/img/health-fitness@3x.9676cd74.png" alt="a person dressed in pink sitting on a yoga mat in front of a candle with windows in the background" className="centerHomePageImages2" />

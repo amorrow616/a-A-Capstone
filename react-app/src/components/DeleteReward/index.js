@@ -15,9 +15,9 @@ export default function DeleteReward({ reward }) {
     }
     return (
         <>
-            <div>
-                <h1>Confirm Delete</h1>
-                <h2>Are you sure you want to delete this reward?</h2>
+            <div className="deleteModal">
+                <h1 id='deleteSpotHead'>Confirm Delete</h1>
+                <h2 id='deleteSpotBlurb'>Are you sure you want to delete this reward?</h2>
                 <button onClick={(e) => rewardDelete(e, rewardId)} id='deleteButton'>Yes (delete reward)</button>
                 <button onClick={closeModal} id='dontDeleteButton'>No (keep reward)</button>
             </div>

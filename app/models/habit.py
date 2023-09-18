@@ -10,7 +10,8 @@ class Habit(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     title = db.Column(db.String(255), nullable=False)
     notes = db.Column(db.String(450))
-    positive_or_negative = db.Column(db.String)
+    positive = db.Column(db.Boolean)
+    negative = db.Column(db.Boolean)
     difficulty = db.Column(db.String(20))
     tags = db.Column(db.String(25))
     # one user can have many habits
@@ -22,7 +23,8 @@ class Habit(db.Model):
             'user_id': self.user_id,
             'title': self.title,
             'notes': self.notes,
-            'positive_or_negative': self.positive_or_negative,
+            'positive': self.positive,
+            'negative': self.negative,
             'difficulty': self.difficulty,
             'tags': self.tags
         }
