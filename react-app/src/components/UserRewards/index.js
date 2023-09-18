@@ -50,7 +50,7 @@ export default function UserRewards() {
                     <div className="eachElement">
                         <div className="visibleElement">
                             <div className="formTitle">{reward.title}</div>
-                            <div>{reward.notes}</div>
+                            <div className="formNotes">{reward.notes}</div>
                             <div id="rewardCost">{reward.cost}</div>
                         </div>
                         <OpenModalButton

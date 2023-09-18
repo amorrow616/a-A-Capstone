@@ -1,5 +1,12 @@
+.formNotes {
+    text-wrap: wrap;
+    word-break: break-all;
+}
+
 .formTitle {
     font-size: 125%;
+    text-wrap: wrap;
+    word-break: break-all;
 }
 
 .tagIcon {

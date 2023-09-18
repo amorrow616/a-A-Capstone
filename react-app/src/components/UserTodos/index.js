@@ -50,8 +50,8 @@ export default function UserTodos() {
                     <div className="eachElement">
                         <div className="visibleElement">
                             <div className="formTitle">{todo.title}</div>
-                            <div>{todo.notes}</div>
-                            <div>{todo.checklist.split(',').map((item) => (
+                            <div className="formNotes">{todo.notes}</div>
+                            <div>{todo.checklist && todo.checklist.split(',').map((item) => (
                                 <label>
                                     <input
                                         type='checkbox'

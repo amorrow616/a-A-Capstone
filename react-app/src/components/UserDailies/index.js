@@ -50,8 +50,8 @@ export default function UserDailies() {
                     <div className="eachElement">
                         <div className="visibleElement">
                             <div className="formTitle">{daily.title}</div>
-                            <div>{daily.notes}</div>
-                            <div>{daily.checklist.split(',').map((item) => (
+                            <div className="formNotes">{daily.notes}</div>
+                            <div>{daily.checklist && daily.checklist.split(',').map((item) => (
                                 <label>
                                     <input
                                         type='checkbox'

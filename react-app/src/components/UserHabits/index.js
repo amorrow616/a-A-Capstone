@@ -52,7 +52,7 @@ export default function UserHabits() {
                     <div className="eachElement">
                         <div className="visibleElement">
                             <div className="formTitle">{habit.title}</div>
-                            <div>{habit.notes}</div>
+                            <div className="formNotes">{habit.notes}</div>
                             <div className="tagIcon">{habit.tags ? <AiOutlineTag /> : ''}</div>
                         </div>
                         <OpenModalButton
