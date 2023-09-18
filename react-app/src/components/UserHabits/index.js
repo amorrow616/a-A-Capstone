@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton';
 import UpdateHabit from '../UpdateHabit';
 import * as habitActions from '../../store/habits';
+import { AiOutlineTag } from "react-icons/ai";
 import './UserHabits.css';
 
 export default function UserHabits() {
@@ -50,9 +51,9 @@ export default function UserHabits() {
                 <li key={habit.id} id="habitsList">
                     <div className="eachElement">
                         <div className="visibleElement">
-                            <div>{habit.title}</div>
+                            <div className="formTitle">{habit.title}</div>
                             <div>{habit.notes}</div>
-                            <div>{habit.tags}</div>
+                            <div className="tagIcon">{habit.tags ? <AiOutlineTag /> : ''}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateHabit habit={habit} />}

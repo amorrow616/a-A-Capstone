@@ -49,9 +49,9 @@ export default function UserTodos() {
                 <li key={todo.id} id="dailiesList">
                     <div className="eachElement">
                         <div className="visibleElement">
-                            <div>{todo.title}</div>
+                            <div className="formTitle">{todo.title}</div>
                             <div>{todo.notes}</div>
-                            <div>{todo.checklist}</div>
+                            {/* <div>{todo.checklist}</div> */}
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateTodo todo={todo} />}

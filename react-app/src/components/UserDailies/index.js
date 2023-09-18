@@ -49,9 +49,9 @@ export default function UserDailies() {
                 <li key={daily.id} id="dailiesList">
                     <div className="eachElement">
                         <div className="visibleElement">
-                            <div>{daily.title}</div>
+                            <div className="formTitle">{daily.title}</div>
                             <div>{daily.notes}</div>
-                            <div>{daily.checklist}</div>
+                            {/* <div>{daily.checklist}</div> */}
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateDaily daily={daily} />}
