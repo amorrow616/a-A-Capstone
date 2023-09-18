@@ -22,9 +22,12 @@ export default function CreateReward({ reward, formType }) {
         if (notes && notes.length > 450) {
             errors.notes = 'Notes must be less than 450 characters.'
         }
+        if ((cost && cost < 1) || (cost && cost > 5000)) {
+            errors.cost = 'Cost must be between 1 and 5000.'
+        }
 
         setErrors(errors);
-    }, [title, notes]);
+    }, [title, notes, cost]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -87,6 +90,7 @@ export default function CreateReward({ reward, formType }) {
                 </div>
                 <div className="lowerCreateForm">
                     <label>
+                        {errors.cost && <p id="errorP">{errors.cost}</p>}
                         Cost
                         <input
                             type='number'
@@ -110,7 +114,7 @@ export default function CreateReward({ reward, formType }) {
                         <option value='Creativity'>Creativity</option>
                     </select>
                 </div>
-                {formType === 'Update Reward' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Create</button>}
+                {formType === 'Update Reward' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450) || (cost && cost < 1) || (cost && cost > 5000)} className="formSubmit">Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450) || (cost && cost < 1) || (cost && cost > 5000)} className="formSubmit">Create</button>}
             </form>
         </>
     )

@@ -1,3 +1,8 @@
+.checklistItem {
+    text-wrap: wrap;
+    word-break: break-all;
+}
+
 .eachElement {
     position: relative;
 }

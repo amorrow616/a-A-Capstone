@@ -28,9 +28,12 @@ export default function CreateDaily({ daily, formType }) {
         if (notes && notes.length > 450) {
             errors.notes = 'Notes must be less than 450 characters.'
         }
+        if (checklist && checklist.length > 255) {
+            errors.checklist = 'Item must be less than 255 characters.'
+        }
 
         setErrors(errors);
-    }, [title, notes]);
+    }, [title, notes, checklist]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -63,7 +66,7 @@ export default function CreateDaily({ daily, formType }) {
 
     const addCheckItem = (e) => {
         e.preventDefault();
-        if (checklist.length === 0) return;
+        if (checklist.length === 0 || checklist.length > 255) return;
         setChecklistItems([...checklistItems, checklist]);
         setChecklist('');
     }
@@ -101,6 +104,7 @@ export default function CreateDaily({ daily, formType }) {
                 </div>
                 <div className="lowerCreateForm">
                     <label>
+                        {errors.checklist && <p id="errorP">{errors.checklist}</p>}
                         Checklist
                         <input
                             type='text'
