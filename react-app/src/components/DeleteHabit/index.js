@@ -15,9 +15,9 @@ export default function DeleteHabit({ habit }) {
     };
     return (
         <>
-            <div>
-                <h1>Confirm Delete</h1>
-                <h2>Are you sure you want to delete this habit?</h2>
+            <div className="deleteModal">
+                <h1 id='deleteSpotHead'>Confirm Delete</h1>
+                <h2 id='deleteSpotBlurb'>Are you sure you want to delete this habit?</h2>
                 <button onClick={(e) => habitDelete(e, habitId)} id='deleteButton'>Yes (delete habit)</button>
                 <button onClick={closeModal} id='dontDeleteButton'>No (keep habit)</button>
             </div>

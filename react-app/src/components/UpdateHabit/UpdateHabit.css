@@ -1,0 +1,12 @@
+.deleteOnEditForm {
+    border: none;
+    background-color: white;
+    color: rgb(221, 17, 17);
+    cursor: pointer;
+    font-size: 100%;
+    margin-bottom: 3%;
+}
+
+.deleteOnEditForm:hover {
+    text-decoration: underline;
+}

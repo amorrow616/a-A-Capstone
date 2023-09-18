@@ -55,28 +55,31 @@ export default function CreateHabit({ habit, formType }) {
     }
     return (
         <>
-            {formType === 'Update Habit' ? <h1>Edit Habit</h1> : <h1>Create Habit</h1>}
             <form onSubmit={handleSubmit} className="createForms">
-                <label>
-                    {errors.title && <p id="errorP">{errors.title}</p>}
-                    Title*
-                    <input
-                        type='text'
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        placeholder='Add a title'
-                    />
-                </label>
-                <label>
-                    {errors.notes && <p id="errorP">{errors.notes}</p>}
-                    Notes
-                    <input
-                        type='text'
-                        onChange={(e) => setNotes(e.target.value)}
-                        value={notes}
-                        placeholder='Add notes'
-                    />
-                </label>
+                <div className="upperForm">
+                    {formType === 'Update Habit' ? <h1>Edit Habit</h1> : <h1>Create Habit</h1>}
+                    <label>
+                        {errors.title && <p id="errorP">{errors.title}</p>}
+                        Title*
+                        <input
+                            type='text'
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                            placeholder='Add a title'
+                        />
+                    </label>
+                    <label>
+                        {errors.notes && <p id="errorP">{errors.notes}</p>}
+                        Notes
+                        <input
+                            id="notesInput"
+                            type='textarea'
+                            onChange={(e) => setNotes(e.target.value)}
+                            value={notes}
+                            placeholder='Add notes'
+                        />
+                    </label>
+                </div>
                 <label for="positive">Positive</label>
                 <input
                     type='checkbox'
@@ -95,31 +98,33 @@ export default function CreateHabit({ habit, formType }) {
                     value={negative}
                     checked={negative}
                 />
-                Difficulty
-                <select
-                    value={difficulty}
-                    onChange={(e) => setDifficulty(e.target.value)}
-                >
-                    <option value='Trivial'>Trivial</option>
-                    <option value='Easy'>Easy</option>
-                    <option value='Medium'>Medium</option>
-                    <option value='Hard'>Hard</option>
-                </select>
-                Tags
-                <select
-                    value={tags}
-                    onChange={(e) => setTags(e.target.value)}
-                >
-                    <option value='Work'>Work</option>
-                    <option value='Exercise'>Exercise</option>
-                    <option value='Health + Wellness'>Health + Wellness</option>
-                    <option value='School'>School</option>
-                    <option value='Teams'>Teams</option>
-                    <option value='Chores'>Chores</option>
-                    <option value='Creativity'>Creativity</option>
-                </select>
-                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Create</button>}
-            </form>
+                <div className="lowerCreateForm">
+                    Difficulty
+                    <select
+                        value={difficulty}
+                        onChange={(e) => setDifficulty(e.target.value)}
+                    >
+                        <option value='Trivial'>Trivial</option>
+                        <option value='Easy'>Easy</option>
+                        <option value='Medium'>Medium</option>
+                        <option value='Hard'>Hard</option>
+                    </select>
+                    Tags
+                    <select
+                        value={tags}
+                        onChange={(e) => setTags(e.target.value)}
+                    >
+                        <option value='Work'>Work</option>
+                        <option value='Exercise'>Exercise</option>
+                        <option value='Health + Wellness'>Health + Wellness</option>
+                        <option value='School'>School</option>
+                        <option value='Teams'>Teams</option>
+                        <option value='Chores'>Chores</option>
+                        <option value='Creativity'>Creativity</option>
+                    </select>
+                </div>
+                {formType === 'Update Habit' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Create</button>}
+            </form >
         </>
     )
 }

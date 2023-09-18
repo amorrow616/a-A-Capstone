@@ -75,66 +75,69 @@ export default function CreateDaily({ daily, formType }) {
     }
     return (
         <>
-            {formType === 'Update Daily' ? <h1 className="upperForm">Edit Daily</h1> : <h1 className="upperForm">Create Daily</h1>}
             <form onSubmit={handleSubmit} className="createForms">
-                <label className="upperForm">
-                    {errors.title && <p id="errorP">{errors.title}</p>}
-                    Title*
-                    <input
-                        type='text'
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        placeholder='Add a title'
-                    />
-                </label>
-                <label className="upperForm">
-                    {errors.notes && <p id="errorP">{errors.notes}</p>}
-                    Notes
-                    <input
-                        type='text'
-                        onChange={(e) => setNotes(e.target.value)}
-                        value={notes}
-                        placeholder='Add notes'
-                    />
-                </label>
-                <label>
-                    Checklist
-                    <input
-                        type='text'
-                        onChange={(e) => setChecklist(e.target.value)}
-                        value={checklist}
-                        placeholder='New checklist item'
-                    />
-                    <button onClick={addCheckItem}>Add</button>
-                    <ul>
-                        {checklistItems.map((item, index) => (
-                            <div key={index}>
-                                <input value={item} type="checkbox" />
-                                {item}
-                                <button onClick={() => removeCheckItem(index)}>Remove</button>
-                            </div>
-                        ))}
-                    </ul>
-                </label>
-                Difficulty
-                <select
-                    value={difficulty}
-                    onChange={(e) => setDifficulty(e.target.value)}
-                >
-                    <option value='Trivial'>Trivial</option>
-                    <option value='Easy'>Easy</option>
-                    <option value='Medium'>Medium</option>
-                    <option value='Hard'>Hard</option>
-                </select>
-                <label>
-                    Start Date
-                    <input
-                        type='date'
-                        onChange={(e) => setStartDate(e.target.value)}
-                        value={startDate}
-                    />
-                </label>
-                {/* <label>
+                <div className="upperForm">
+                    {formType === 'Update Daily' ? <h1 className="upperForm">Edit Daily</h1> : <h1 className="upperForm">Create Daily</h1>}
+                    <label className="upperForm">
+                        {errors.title && <p id="errorP">{errors.title}</p>}
+                        Title*
+                        <input
+                            type='text'
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                            placeholder='Add a title'
+                        />
+                    </label>
+                    <label className="upperForm">
+                        {errors.notes && <p id="errorP">{errors.notes}</p>}
+                        Notes
+                        <input
+                            type='text'
+                            onChange={(e) => setNotes(e.target.value)}
+                            value={notes}
+                            placeholder='Add notes'
+                        />
+                    </label>
+                </div>
+                <div className="lowerCreateForm">
+                    <label>
+                        Checklist
+                        <input
+                            type='text'
+                            onChange={(e) => setChecklist(e.target.value)}
+                            value={checklist}
+                            placeholder='New checklist item'
+                        />
+                        <button onClick={addCheckItem}>Add</button>
+                        <ul>
+                            {checklistItems.map((item, index) => (
+                                <div key={index}>
+                                    <input value={item} type="checkbox" />
+                                    {item}
+                                    <button onClick={() => removeCheckItem(index)}>Remove</button>
+                                </div>
+                            ))}
+                        </ul>
+                    </label>
+                    Difficulty
+                    <select
+                        value={difficulty}
+                        onChange={(e) => setDifficulty(e.target.value)}
+                    >
+                        <option value='Trivial'>Trivial</option>
+                        <option value='Easy'>Easy</option>
+                        <option value='Medium'>Medium</option>
+                        <option value='Hard'>Hard</option>
+                    </select>
+                    <label>
+                        Start Date
+                        <input
+                            type='date'
+                            onChange={(e) => setStartDate(e.target.value)}
+                            value={startDate}
+                        />
+                    </label>
+                    {/* <label>
                     Repeats
                     <select
                         value={repeats}
@@ -155,20 +158,21 @@ export default function CreateDaily({ daily, formType }) {
                         placeholder='0'
                     />
                 </label> */}
-                Tags
-                <select
-                    value={tags}
-                    onChange={(e) => setTags(e.target.value)}
-                >
-                    <option value='Work'>Work</option>
-                    <option value='Exercise'>Exercise</option>
-                    <option value='Health + Wellness'>Health + Wellness</option>
-                    <option value='School'>School</option>
-                    <option value='Teams'>Teams</option>
-                    <option value='Chores'>Chores</option>
-                    <option value='Creativity'>Creativity</option>
-                </select>
-                {formType === 'Update Daily' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)}>Create</button>}
+                    Tags
+                    <select
+                        value={tags}
+                        onChange={(e) => setTags(e.target.value)}
+                    >
+                        <option value='Work'>Work</option>
+                        <option value='Exercise'>Exercise</option>
+                        <option value='Health + Wellness'>Health + Wellness</option>
+                        <option value='School'>School</option>
+                        <option value='Teams'>Teams</option>
+                        <option value='Chores'>Chores</option>
+                        <option value='Creativity'>Creativity</option>
+                    </select>
+                </div>
+                {formType === 'Update Daily' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Create</button>}
             </form >
         </>
     )

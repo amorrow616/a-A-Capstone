@@ -35,6 +35,8 @@ body {
 .homePageBigHeadings {
     color: white;
     font-size: 300%;
+    display: flex;
+    justify-content: center;
 }
 
 .homePageHeadings {
