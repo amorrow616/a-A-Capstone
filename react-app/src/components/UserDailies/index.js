@@ -51,7 +51,14 @@ export default function UserDailies() {
                         <div className="visibleElement">
                             <div className="formTitle">{daily.title}</div>
                             <div>{daily.notes}</div>
-                            {/* <div>{daily.checklist}</div> */}
+                            <div>{daily.checklist.split(',').map((item) => (
+                                <label>
+                                    <input
+                                        type='checkbox'
+                                    />
+                                    {item}
+                                </label>
+                            ))}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateDaily daily={daily} />}

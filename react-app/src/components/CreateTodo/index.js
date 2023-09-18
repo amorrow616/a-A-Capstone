@@ -9,8 +9,8 @@ export default function CreateTodo({ todo, formType }) {
     const userId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState(formType === 'Update Todo' ? todo.title : '');
     const [notes, setNotes] = useState(formType === 'Update Todo' ? todo.notes : '');
-    const [checklist, setChecklist] = useState(formType === 'Update Todo' ? todo.checklist : '');
-    const [checklistItems, setChecklistItems] = useState([]);
+    const [checklist, setChecklist] = useState('');
+    const [checklistItems, setChecklistItems] = useState(formType === 'Update Todo' ? (todo.checklist ? todo.checklist.split(',') : []) : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Todo' ? todo.difficulty : '');
     const [dueDate, setDueDate] = useState(formType === 'Update Todo' ? todo.dueDate : '');
     const [tags, setTags] = useState(formType === 'Update Todo' ? todo.tags : '');
@@ -34,9 +34,9 @@ export default function CreateTodo({ todo, formType }) {
         const newTodo = {
             title,
             notes,
-            checklist,
+            checklist: checklistItems.join(),
             difficulty,
-            dueDate,
+            // dueDate,
             tags
         }
 
@@ -53,6 +53,19 @@ export default function CreateTodo({ todo, formType }) {
                 closeModal();
             })
         }
+    }
+
+    const addCheckItem = (e) => {
+        e.preventDefault();
+        if (checklist.length === 0) return;
+        setChecklistItems([...checklistItems, checklist]);
+        setChecklist('');
+    }
+
+    const removeCheckItem = (index) => {
+        const itemsList = [...checklistItems];
+        itemsList.splice(index, 1);
+        setChecklistItems(itemsList);
     }
     return (
         <>
@@ -89,6 +102,16 @@ export default function CreateTodo({ todo, formType }) {
                             value={checklist}
                             placeholder='New checklist item'
                         />
+                        <button onClick={addCheckItem}>Add</button>
+                        <ul>
+                            {checklistItems.map((item, index) => (
+                                <div key={index}>
+                                    <input value={item} type="checkbox" />
+                                    {item}
+                                    <button onClick={() => removeCheckItem(index)}>Remove</button>
+                                </div>
+                            ))}
+                        </ul>
                     </label>
                     Difficulty
                     <select
@@ -100,14 +123,14 @@ export default function CreateTodo({ todo, formType }) {
                         <option value='Medium'>Medium</option>
                         <option value='Hard'>Hard</option>
                     </select>
-                    <label>
+                    {/* <label>
                         Due Date
                         <input
                             type='date'
                             onChange={(e) => setDueDate(e.target.value)}
                             value={dueDate}
                         />
-                    </label>
+                    </label> */}
                     Tags
                     <select
                         value={tags}

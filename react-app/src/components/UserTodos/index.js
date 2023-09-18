@@ -51,7 +51,14 @@ export default function UserTodos() {
                         <div className="visibleElement">
                             <div className="formTitle">{todo.title}</div>
                             <div>{todo.notes}</div>
-                            {/* <div>{todo.checklist}</div> */}
+                            <div>{todo.checklist.split(',').map((item) => (
+                                <label>
+                                    <input
+                                        type='checkbox'
+                                    />
+                                    {item}
+                                </label>
+                            ))}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateTodo todo={todo} />}

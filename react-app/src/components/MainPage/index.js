@@ -11,25 +11,25 @@ export default function MainPage() {
             <AddTask />
             <div className="mainPageColumns">
                 <div className="habitsColumn">
-                    <h2>Habits</h2>
+                    <h2 className="columnHeads">Habits</h2>
                     <div className="innerColumns">
                         <UserHabits />
                     </div>
                 </div>
                 <div className="dailiesColumn">
-                    <h2>Dailies</h2>
+                    <h2 className="columnHeads">Dailies</h2>
                     <div className="innerColumns">
                         <UserDailies />
                     </div>
                 </div>
                 <div className="todosColumn">
-                    <h2>To Do's</h2>
+                    <h2 className="columnHeads">To Do's</h2>
                     <div className="innerColumns">
                         <UserTodos />
                     </div>
                 </div>
                 <div className="rewardsColumn">
-                    <h2>Rewards</h2>
+                    <h2 className="columnHeads">Rewards</h2>
                     <div className="innerColumns">
                         <UserRewards />
                     </div>

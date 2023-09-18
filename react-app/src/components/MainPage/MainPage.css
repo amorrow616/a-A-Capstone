@@ -1,3 +1,7 @@
+.columnHeads {
+    color: white;
+}
+
 .dailiesColumn {
     flex: 1;
 }
