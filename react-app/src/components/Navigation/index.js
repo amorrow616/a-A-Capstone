@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
 								<NavLink exact to="/signup" id="getStarted">Get Started</NavLink>
 								: ''}
 						</li>
-						<li>{!sessionUser ? <NavLink exact to="/" id="learnMore">Learn More</NavLink> : ''}</li>
+						{/* <li>{!sessionUser ? <NavLink exact to="/" id="learnMore">Learn More</NavLink> : ''}</li> */}
 					</ul>
 				</div>
 				{isLoaded && sessionUser ? (
