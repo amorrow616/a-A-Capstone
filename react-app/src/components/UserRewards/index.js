@@ -55,7 +55,7 @@ export default function UserRewards() {
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateReward reward={reward} />}
-                            className={'updateButton'}
+                            className={'updateButtonWhole'}
                         />
                     </div >
                 </li>

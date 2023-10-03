@@ -57,7 +57,7 @@ export default function UserHabits() {
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateHabit habit={habit} />}
-                            className={'updateButton'}
+                            className={'updateButtonWhole'}
                         />
                     </div >
                 </li>

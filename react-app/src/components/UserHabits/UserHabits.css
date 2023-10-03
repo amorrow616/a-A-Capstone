@@ -1,16 +1,27 @@
 .formNotes {
     text-wrap: wrap;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .formTitle {
     font-size: 125%;
     text-wrap: wrap;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .tagIcon {
     margin-left: 90%;
+}
+
+.updateButtonWhole {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    border: none;
+    opacity: 0;
 }
 
 #habitsList {

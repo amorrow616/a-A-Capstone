@@ -13,6 +13,7 @@
 .innerColumns {
     background-color: rgb(224, 222, 222);
     height: 600px;
+    overflow: auto;
 }
 
 .mainPageColumns {
