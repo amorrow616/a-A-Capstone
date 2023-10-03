@@ -24,6 +24,7 @@
     background-color: white;
     margin-right: 3%;
     margin-left: 2%;
+    border: 1px solid white;
 }
 
 #dailiesList:hover {
