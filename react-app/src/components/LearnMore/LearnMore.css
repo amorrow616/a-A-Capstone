@@ -1,0 +1,11 @@
+.learnMoreLinks {
+    font-size: 200%;
+    color: white;
+    margin-left: 50%;
+}
+
+.learnMoreText {
+    color: white;
+    display: flex;
+    justify-content: center;
+}

@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePageRender from "./components/HomePage";
 import MainPage from "./components/MainPage";
+import LearnMore from "./components/LearnMore";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/tasks">
             <MainPage />
+          </Route>
+          <Route exact path="/learnmore">
+            <LearnMore />
           </Route>
           <Route exact path="/">
             <HomePageRender />
