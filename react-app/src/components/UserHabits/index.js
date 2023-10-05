@@ -47,7 +47,7 @@ export default function UserHabits() {
                     />
                 </label>
             </form>
-            {Object.values(habits).map((habit) => (
+            {habits && Object.values(habits).map((habit) => (
                 <li key={habit.id} id="habitsList">
                     <div className="eachElement">
                         <div className="visibleElement">

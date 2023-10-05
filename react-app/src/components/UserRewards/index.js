@@ -45,7 +45,7 @@ export default function UserRewards() {
                     />
                 </label>
             </form>
-            {Object.values(rewards).map((reward) => (
+            {rewards && Object.values(rewards).map((reward) => (
                 <li key={reward.id} id="habitsList">
                     <div className="eachElement">
                         <div className="visibleElement">

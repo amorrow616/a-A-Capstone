@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import * as dailyActions from '../../store/dailies';
 
 export default function CreateDaily({ daily, formType }) {
@@ -12,7 +14,7 @@ export default function CreateDaily({ daily, formType }) {
     const [checklist, setChecklist] = useState('');
     const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split(',') : []) : []);
     const [difficulty, setDifficulty] = useState(formType === 'Update Daily' ? daily.difficulty : '');
-    const [startDate, setStartDate] = useState(formType === 'Update Daily' ? daily.startDate : Date());
+    const [startDate, setStartDate] = useState(formType === 'Update Daily' ? new Date(daily.start_date) : new Date());
     // const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
     // const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
     // const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
@@ -42,7 +44,7 @@ export default function CreateDaily({ daily, formType }) {
             notes,
             checklist: checklistItems.join(),
             difficulty,
-            startDate,
+            start_date: startDate.toISOString().split('T')[0],
             // repeats,
             // repeatEvery,
             // repeatOn,
@@ -69,13 +71,14 @@ export default function CreateDaily({ daily, formType }) {
         if (checklist.length === 0 || checklist.length > 255) return;
         setChecklistItems([...checklistItems, checklist]);
         setChecklist('');
-    }
+    };
 
     const removeCheckItem = (index) => {
         const itemsList = [...checklistItems];
         itemsList.splice(index, 1);
         setChecklistItems(itemsList);
-    }
+    };
+
     return (
         <>
             <form onSubmit={handleSubmit} className="createForms">
@@ -133,14 +136,14 @@ export default function CreateDaily({ daily, formType }) {
                         <option value='Medium'>Medium</option>
                         <option value='Hard'>Hard</option>
                     </select>
-                    <label>
-                        Start Date
-                        <input
-                            type='date'
-                            onChange={(e) => setStartDate(e.target.value)}
-                            value={startDate}
-                        />
-                    </label>
+                    Start Date
+                    <DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        dateFormat='yyyy-MM-dd'
+                        shouldCloseOnSelect={true}
+                    />
+
                     {/* <label>
                     Repeats
                     <select

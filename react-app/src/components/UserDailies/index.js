@@ -45,7 +45,7 @@ export default function UserDailies() {
                     />
                 </label>
             </form>
-            {Object.values(dailies).map((daily) => (
+            {dailies && Object.values(dailies).map((daily) => (
                 <li key={daily.id} id="dailiesList">
                     <div className="eachElement">
                         <div className="visibleElement">
@@ -60,6 +60,7 @@ export default function UserDailies() {
                                 </label>
                             ))}</div>
                         </div>
+                        {/* <div>Start Date: {daily.start_date && daily.start_date.slice(0, 16)}</div> */}
                         <OpenModalButton
                             modalComponent={<UpdateDaily daily={daily} />}
                             className={'updateButton'}

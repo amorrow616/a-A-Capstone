@@ -45,7 +45,7 @@ export default function UserTodos() {
                     />
                 </label>
             </form>
-            {Object.values(todos).map((todo) => (
+            {todos && Object.values(todos).map((todo) => (
                 <li key={todo.id} id="dailiesList">
                     <div className="eachElement">
                         <div className="visibleElement">
