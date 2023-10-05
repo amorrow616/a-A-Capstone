@@ -5,20 +5,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as dailyActions from '../../store/dailies';
 
-export default function CreateDaily({ daily, formType }) {
+export default function CreateDaily() {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const userId = useSelector((state) => state.session.user.id);
-    const [title, setTitle] = useState(formType === 'Update Daily' ? daily.title : '');
-    const [notes, setNotes] = useState(formType === 'Update Daily' ? daily.notes : '');
+    const [title, setTitle] = useState('');
+    const [notes, setNotes] = useState('');
     const [checklist, setChecklist] = useState('');
-    const [checklistItems, setChecklistItems] = useState(formType === 'Update Daily' ? (daily.checklist ? daily.checklist.split(',') : []) : []);
-    const [difficulty, setDifficulty] = useState(formType === 'Update Daily' ? daily.difficulty : '');
-    const [startDate, setStartDate] = useState(formType === 'Update Daily' ? new Date(daily.start_date) : new Date());
-    // const [repeats, setRepeats] = useState(formType === 'Update Daily' ? daily.repeats : 0);
-    // const [repeatEvery, setRepeatEvery] = useState(formType === 'Update Daily' ? daily.repeatEvery : '');
-    // const [repeatOn, setRepeatOn] = useState(formType === 'Update Daily' ? daily.repeatOn : '');
-    const [tags, setTags] = useState(formType === 'Update Daily' ? daily.tags : '');
+    const [checklistItems, setChecklistItems] = useState([]);
+    const [difficulty, setDifficulty] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
+    const [tags, setTags] = useState('');
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -45,25 +42,13 @@ export default function CreateDaily({ daily, formType }) {
             checklist: checklistItems.join(),
             difficulty,
             start_date: startDate.toISOString().split('T')[0],
-            // repeats,
-            // repeatEvery,
-            // repeatOn,
             tags
         };
-
-        if (formType === 'Update Daily') {
-            const returnFromThunk = dailyActions.updateDaily(newDaily, daily.id);
-            return dispatch(returnFromThunk).then(async () => {
-                await dispatch(dailyActions.fetchDailies(userId));
-                closeModal();
-            });
-        } else {
-            const returnFromThunk = dailyActions.createDaily(newDaily, userId);
-            return dispatch(returnFromThunk).then(async () => {
-                await dispatch(dailyActions.fetchDailies(userId));
-                closeModal();
-            });
-        }
+        const returnFromThunk = dailyActions.createDaily(newDaily, userId);
+        return dispatch(returnFromThunk).then(async () => {
+            await dispatch(dailyActions.fetchDailies(userId));
+            closeModal();
+        });
     }
 
     const addCheckItem = (e) => {
@@ -78,12 +63,11 @@ export default function CreateDaily({ daily, formType }) {
         itemsList.splice(index, 1);
         setChecklistItems(itemsList);
     };
-
     return (
         <>
             <form onSubmit={handleSubmit} className="createForms">
                 <div className="upperForm">
-                    {formType === 'Update Daily' ? <h1 className="upperForm">Edit Daily</h1> : <h1 className="upperForm">Create Daily</h1>}
+                    {<h1 className="upperForm">Create Daily</h1>}
                     <label className="upperForm">
                         {errors.title && <p id="errorP">{errors.title}</p>}
                         Title*
@@ -143,28 +127,6 @@ export default function CreateDaily({ daily, formType }) {
                         dateFormat='yyyy-MM-dd'
                         shouldCloseOnSelect={true}
                     />
-
-                    {/* <label>
-                    Repeats
-                    <select
-                        value={repeats}
-                        onChange={(e) => setRepeats(e.target.value)}
-                    >
-                        <option value='Daily'>Daily</option>
-                        <option value='Weekly'>Weekly</option>
-                        <option value='Monthly'>Monthly</option>
-                        <option value='Yearly'>Yearly</option>
-                    </select>
-                </label>
-                <label>
-                    Repeat Every
-                    <input
-                        type='number'
-                        onChange={(e) => setRepeatEvery(e.target.value)}
-                        value={repeatEvery}
-                        placeholder='0'
-                    />
-                </label> */}
                     Tags
                     <select
                         value={tags}
@@ -179,7 +141,7 @@ export default function CreateDaily({ daily, formType }) {
                         <option value='Creativity'>Creativity</option>
                     </select>
                 </div>
-                {formType === 'Update Daily' ? <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Save</button> : <button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Create</button>}
+                {<button type='submit' disabled={title.length < 1 || title.length > 255 || (notes && notes.length > 450)} className="formSubmit">Create</button>}
             </form >
         </>
     )
