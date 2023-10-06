@@ -8,6 +8,7 @@
     color: white;
     display: flex;
     justify-content: center;
+    font-family: 'Delius Swash Caps', cursive;
 }
 
 #imageOfMe {

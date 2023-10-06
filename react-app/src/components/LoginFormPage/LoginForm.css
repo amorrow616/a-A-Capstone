@@ -14,8 +14,9 @@
     padding: 8px 6px;
     border-radius: 3px;
     margin-bottom: 1%;
+    margin-top: 1%;
     cursor: pointer;
-    margin-left: -1%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #errorP {
@@ -23,6 +24,7 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #loginInputs {
@@ -31,6 +33,7 @@
     margin-bottom: 10%;
     width: 240%;
     margin-left: -70%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #loginInputs>input {
@@ -38,6 +41,7 @@
     color: white;
     border: none;
     height: 40px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #loginInputs>input:hover {
@@ -51,14 +55,15 @@
     font-size: 100%;
     padding: 8px 6px;
     border-radius: 3px;
-    margin-left: 30%;
-    margin-bottom: 5%;
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 30%;
 }
 
 #noAccount {
     text-decoration: none;
     color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #noAccount:hover {

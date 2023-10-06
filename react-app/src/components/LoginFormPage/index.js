@@ -32,7 +32,7 @@ function LoginFormPage() {
   return (
     <>
       <div className="loginForm">
-        <h1><GiGriffinSymbol id="signupGriffin" /> patternica</h1>
+        <h1 className='homeLink'><GiGriffinSymbol id="signupGriffin" /> patternica</h1>
         <form onSubmit={handleSubmit}>
           {errors.length ? <p id="errorP">Invalid Credentials</p> : ''}
           <label id="loginInputs">

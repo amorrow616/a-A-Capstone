@@ -25,6 +25,7 @@
     margin-right: 3%;
     margin-left: 2%;
     border: 1px solid white;
+    font-family: 'Indie Flower', cursive;
 }
 
 #dailiesList:hover {
@@ -40,4 +41,5 @@
     background-color: rgb(206, 202, 202);
     color: rgb(109, 105, 105);
     font-weight: bolder;
+    font-family: 'Delius Swash Caps', cursive;
 }

@@ -37,17 +37,20 @@ body {
     font-size: 300%;
     display: flex;
     justify-content: center;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 .homePageHeadings {
     color: white;
     display: flex;
     justify-content: center;
-    font-size: xx-large;
+    font-size: 230%;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 .homePageLeft {
-    margin-left: 20%;
+    margin-left: 22%;
+    width: 100%;
 }
 
 .homePageP {
@@ -55,10 +58,12 @@ body {
     font-size: large;
     display: flex;
     justify-content: center;
+    font-family: 'Delius Swash Caps', cursive;
 }
 
 .homePageRight {
     margin-right: 25%;
+    width: 100%;
 }
 
 .homePageTopWrapper {
@@ -83,6 +88,7 @@ body {
     display: flex;
     justify-content: center;
     font-size: 150%;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 .middlePageP {
@@ -92,6 +98,7 @@ body {
     display: inline-block;
     vertical-align: top;
     margin-top: 0%;
+    font-family: 'Delius Swash Caps', cursive;
 }
 
 #bottomLinkToSignup {
@@ -107,6 +114,7 @@ body {
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #errorPHome {
@@ -122,8 +130,10 @@ body {
 }
 
 #homePageLeftTitle {
-    font-size: 300%;
+    font-size: 275%;
     color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    margin-bottom: 0;
 }
 
 #homePageTopImg {
@@ -150,4 +160,5 @@ body {
     cursor: pointer;
     width: 100%;
     height: 40px;
+    font-family: 'Montserrat', sans-serif;
 }
