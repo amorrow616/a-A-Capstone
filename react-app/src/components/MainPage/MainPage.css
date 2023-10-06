@@ -15,6 +15,7 @@
     background-color: rgb(224, 222, 222);
     height: 600px;
     overflow: auto;
+    border-radius: 7px;
 }
 
 .mainPageColumns {

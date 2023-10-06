@@ -45,6 +45,11 @@
     padding: 3px 15px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
+    border-radius: 7px;
+}
+
+#addTaskButton:hover {
+    background-color: rgb(107, 30, 107);
 }
 
 #plusSign {

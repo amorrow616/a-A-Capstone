@@ -45,6 +45,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+#signupSubmit:hover {
+    background-color: rgb(100, 100, 204);
+}
+
 ::placeholder {
     color: rgb(183, 46, 247);
     font-family: 'Montserrat', sans-serif;
