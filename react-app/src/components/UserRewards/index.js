@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UpdateReward from '../UpdateReward';
 import OpenModalButton from '../OpenModalButton';
+import { BsCoin } from "react-icons/bs";
 import * as rewardActions from '../../store/rewards';
 import './UserRewards.css';
 
@@ -51,7 +52,7 @@ export default function UserRewards() {
                         <div className="visibleElement">
                             <div className="formTitle">{reward.title}</div>
                             <div className="formNotes">{reward.notes}</div>
-                            <div id="rewardCost">{reward.cost}</div>
+                            <div id="rewardCost"><BsCoin id='rewardCoin' />{reward.cost}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateReward reward={reward} />}

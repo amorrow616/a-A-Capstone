@@ -54,8 +54,10 @@ export default function UserHabits() {
                             <div className="formTitle">{habit.title}</div>
                             <div className="formNotes">{habit.notes}</div>
                             <div className="tagIcon">{habit.tags ? <AiOutlineTag /> : ''}</div>
-                            <div id='plusSide'>{habit.positive ? <AiFillPlusCircle /> : ''}</div>
-                            <div id='minusSide'>{habit.negative ? <AiFillMinusCircle /> : ''}</div>
+                            <div id='plusMinus'>
+                                <div id='plusSide'>{habit.positive ? <AiFillPlusCircle /> : ''}</div>
+                                <div id='minusSide'>{habit.negative ? <AiFillMinusCircle /> : ''}</div>
+                            </div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateHabit habit={habit} />}

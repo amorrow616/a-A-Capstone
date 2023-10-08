@@ -28,7 +28,7 @@ export default function UserDailies() {
     };
 
     const checkboxChange = (index) => {
-        const newState = [...checked]
+        const newState = [...checked];
         newState[index] = !newState[index]; // flip the switch on the state
         setChecked(newState);
         localStorage.setItem('checked', JSON.stringify(newState));

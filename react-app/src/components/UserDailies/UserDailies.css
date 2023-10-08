@@ -3,10 +3,6 @@
     word-break: break-word;
 }
 
-.eachElement {
-    position: relative;
-}
-
 .updateButton {
     cursor: pointer;
     position: absolute;
@@ -23,7 +19,7 @@
     margin-bottom: 3px;
     background-color: white;
     margin-right: 3%;
-    margin-left: 2%;
+    margin-left: 3%;
     border: 1px solid white;
     font-family: 'Indie Flower', cursive;
     padding: 0px 5px;

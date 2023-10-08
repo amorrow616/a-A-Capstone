@@ -47,10 +47,11 @@ button:disabled:hover {
     font-family: 'Montserrat', sans-serif;
 }
 
-.posNegBox {
+/* .posNegBox {
     font-size: 200%;
     color: rgb(83, 34, 139);
-}
+    display: flex;
+} */
 
 .upperForm {
     background-color: rgb(85, 23, 126);
@@ -82,4 +83,25 @@ button:disabled:hover {
 
 select {
     font-family: 'Montserrat', sans-serif;
+}
+
+.labelCheck {
+    margin: 3%;
+}
+
+.checkInput:checked+.labelCheck::before {
+    content: '\2713';
+    color: #4caf50;
+}
+
+.labelCheck::before {
+    content: '\2715';
+    color: #f44336;
+    display: flex;
+    justify-content: space-around;
+}
+
+.checkInput:checked+.labelCheck {
+    font-weight: bold;
+    color: #4caf50;
 }

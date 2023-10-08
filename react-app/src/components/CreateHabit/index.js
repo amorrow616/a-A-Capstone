@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as habitActions from '../../store/habits';
-import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+// import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import './CreateHabit.css';
 
 export default function CreateHabit({ habit, formType }) {
@@ -82,8 +82,8 @@ export default function CreateHabit({ habit, formType }) {
                     </label>
                 </div>
                 <div className='checkboxWrapper'>
-                    <label for="positive">Positive<AiFillPlusCircle className='posNegBox' /></label>
                     <input
+                        className='checkInput'
                         type='checkbox'
                         name='positive'
                         id='positive'
@@ -91,8 +91,9 @@ export default function CreateHabit({ habit, formType }) {
                         value={positive}
                         checked={positive}
                     />
-                    <label for="negative">Negative<AiFillMinusCircle className='posNegBox' /></label>
+                    <label for="positive" className='labelCheck'>Positive</label>
                     <input
+                        className='checkInput'
                         type='checkbox'
                         name='negative'
                         id='negative'
@@ -100,6 +101,7 @@ export default function CreateHabit({ habit, formType }) {
                         value={negative}
                         checked={negative}
                     />
+                    <label for="negative" className='labelCheck'>Negative</label>
                 </div>
                 <div className="lowerCreateForm">
                     Difficulty

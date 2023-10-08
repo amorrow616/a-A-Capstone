@@ -1,4 +1,10 @@
+#rewardCoin {
+    color: rgb(221, 191, 20);
+    padding: 1%;
+}
+
 #rewardCost {
     display: flex;
     justify-content: flex-end;
+    font-size: 140%;
 }

@@ -1,3 +1,7 @@
+.eachElement {
+    position: relative;
+}
+
 .formNotes {
     text-wrap: wrap;
     word-break: break-word;
@@ -29,11 +33,12 @@
     margin-bottom: 3px;
     background-color: white;
     margin-right: 3%;
-    margin-left: 2%;
+    margin-left: 3%;
     border: 1px solid white;
     font-family: 'Indie Flower', cursive;
     padding: 0px 5px;
     border-radius: 7px;
+    z-index: 3;
 }
 
 #habitsList:hover {
@@ -59,12 +64,9 @@
     border: 1px solid black;
 }
 
-#plusSide {
-    color: rgb(83, 34, 139);
-    font-size: 200%;
-}
-
-#minusSide {
+#plusMinus {
+    display: flex;
+    justify-content: space-between;
     color: rgb(83, 34, 139);
     font-size: 200%;
 }
