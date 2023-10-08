@@ -9,6 +9,11 @@ button:disabled:hover {
     box-shadow: none;
 }
 
+.checkboxWrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .createForms {
     display: flex;
     flex-direction: column;
@@ -28,6 +33,7 @@ button:disabled:hover {
     margin-bottom: 3%;
     background-color: rgb(88, 51, 136);
     color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .formSubmit:hover {
@@ -38,6 +44,12 @@ button:disabled:hover {
     display: flex;
     flex-direction: column;
     margin: 4%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.posNegBox {
+    font-size: 200%;
+    color: rgb(83, 34, 139);
 }
 
 .upperForm {
@@ -47,6 +59,7 @@ button:disabled:hover {
     align-items: center;
     color: white;
     padding: 2%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #modal-content {
@@ -55,6 +68,18 @@ button:disabled:hover {
     width: 25%;
 }
 
+#negative {
+    display: none;
+}
+
 #notesInput {
     height: 150%;
+}
+
+#positive {
+    display: none;
+}
+
+select {
+    font-family: 'Montserrat', sans-serif;
 }

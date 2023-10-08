@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton';
 import UpdateHabit from '../UpdateHabit';
 import * as habitActions from '../../store/habits';
-import { AiOutlineTag } from "react-icons/ai";
+import { AiOutlineTag, AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import './UserHabits.css';
 
 export default function UserHabits() {
@@ -54,6 +54,8 @@ export default function UserHabits() {
                             <div className="formTitle">{habit.title}</div>
                             <div className="formNotes">{habit.notes}</div>
                             <div className="tagIcon">{habit.tags ? <AiOutlineTag /> : ''}</div>
+                            <div id='plusSide'>{habit.positive ? <AiFillPlusCircle /> : ''}</div>
+                            <div id='minusSide'>{habit.negative ? <AiFillMinusCircle /> : ''}</div>
                         </div>
                         <OpenModalButton
                             modalComponent={<UpdateHabit habit={habit} />}

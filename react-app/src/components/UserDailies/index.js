@@ -10,6 +10,7 @@ export default function UserDailies() {
     const dailies = useSelector((state) => state.dailies.allDailies);
     const sessionUserId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState('');
+    const [checked, setChecked] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,12 +25,24 @@ export default function UserDailies() {
             await dispatch(dailyActions.fetchDailies(sessionUserId));
             setTitle('');
         });
-    }
+    };
+
+    const checkboxChange = (index) => {
+        const newState = [...checked]
+        newState[index] = !newState[index]; // flip the switch on the state
+        setChecked(newState);
+        localStorage.setItem('checked', JSON.stringify(newState));
+    };
 
     useEffect(() => {
         dispatch(dailyActions.fetchDailies(sessionUserId));
     }, [dispatch, sessionUserId]);
 
+    useEffect(() => {
+        const storedStates = JSON.parse(localStorage.getItem('checked')) || [];
+        setChecked(storedStates);
+    }, []);
+    console.log('checked', checked)
     if (!Object.values(dailies)) return null;
     return (
         <>
@@ -51,10 +64,12 @@ export default function UserDailies() {
                         <div className="visibleElement">
                             <div className="formTitle">{daily.title}</div>
                             <div className="formNotes">{daily.notes}</div>
-                            <div>{daily.checklist && daily.checklist.split(',').map((item) => (
-                                <label>
+                            <div>{daily.checklist && daily.checklist.split(',').map((item, index) => (
+                                <label key={index}>
                                     <input
                                         type='checkbox'
+                                        checked={checked[index] || false}
+                                        onChange={() => checkboxChange(index)}
                                     />
                                     <span>{item}</span>
                                 </label>

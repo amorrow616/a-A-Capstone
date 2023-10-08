@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as habitActions from '../../store/habits';
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import './CreateHabit.css';
 
 export default function CreateHabit({ habit, formType }) {
@@ -80,24 +81,26 @@ export default function CreateHabit({ habit, formType }) {
                         />
                     </label>
                 </div>
-                <label for="positive">Positive</label>
-                <input
-                    type='checkbox'
-                    name='positive'
-                    id='positive'
-                    onChange={() => setPositive(!positive)}
-                    value={positive}
-                    checked={positive}
-                />
-                <label for="negative">Negative</label>
-                <input
-                    type='checkbox'
-                    name='negative'
-                    id='negative'
-                    onChange={() => setNegative(!negative)}
-                    value={negative}
-                    checked={negative}
-                />
+                <div className='checkboxWrapper'>
+                    <label for="positive">Positive<AiFillPlusCircle className='posNegBox' /></label>
+                    <input
+                        type='checkbox'
+                        name='positive'
+                        id='positive'
+                        onChange={() => setPositive(!positive)}
+                        value={positive}
+                        checked={positive}
+                    />
+                    <label for="negative">Negative<AiFillMinusCircle className='posNegBox' /></label>
+                    <input
+                        type='checkbox'
+                        name='negative'
+                        id='negative'
+                        onChange={() => setNegative(!negative)}
+                        value={negative}
+                        checked={negative}
+                    />
+                </div>
                 <div className="lowerCreateForm">
                     Difficulty
                     <select

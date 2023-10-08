@@ -58,3 +58,13 @@
     background-color: rgb(197, 193, 193);
     border: 1px solid black;
 }
+
+#plusSide {
+    color: rgb(83, 34, 139);
+    font-size: 200%;
+}
+
+#minusSide {
+    color: rgb(83, 34, 139);
+    font-size: 200%;
+}
