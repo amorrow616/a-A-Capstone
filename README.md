@@ -2,7 +2,11 @@
 
 My capstone project for App Academy, a Habitica inspired website. As a user you can navigate through the landing page to learn more about the site as well as get to the signup and login pages several different ways to ensure ease of use. Once you are logged in, you can use the site to promote healthy living by creating habits, dailies, todos, and rewards.
 
-[Live Site]('https://patternica.onrender.com')
+![home page](./react-app/src/images/homepage.png)
+![main page](./react-app/src/images/mainpage.png)
+
+
+Live Site: https://patternica.onrender.com
 
 It is still a work in progress. In the works is customizable avatars, health and experience bars, and gear.
 

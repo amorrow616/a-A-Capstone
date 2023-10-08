@@ -53,7 +53,7 @@ export default function UserHabits() {
                         <div className="visibleElement">
                             <div className="formTitle">{habit.title}</div>
                             <div className="formNotes">{habit.notes}</div>
-                            <div className="tagIcon">{habit.tags ? <AiOutlineTag /> : ''}</div>
+                            {/* <div className="tagIcon">{habit.tags ? <AiOutlineTag /> : ''}</div> */}
                             <div id='plusMinus'>
                                 <div id='plusSide'>{habit.positive ? <AiFillPlusCircle /> : ''}</div>
                                 <div id='minusSide'>{habit.negative ? <AiFillMinusCircle /> : ''}</div>
@@ -67,6 +67,8 @@ export default function UserHabits() {
                 </li>
             ))
             }
+            <h4 className='infoBlurbs'>These are your Habits</h4>
+            <p className='infoBlurbs'>Habits don't have a rigid schedule. You can check them off multiple times per day.</p>
         </>
     )
 }

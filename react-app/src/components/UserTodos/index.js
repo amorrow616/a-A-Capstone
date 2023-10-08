@@ -67,6 +67,8 @@ export default function UserTodos() {
                     </div>
                 </li>
             ))}
+            <h4 className='infoBlurbs'>These are your To Do's</h4>
+            <p className='infoBlurbs'>To Do's need to be completed once. Add checklists to your To Do's to increase their value.</p>
         </>
     )
 }

@@ -83,6 +83,8 @@ export default function UserDailies() {
                     </div>
                 </li>
             ))}
+            <h4 className='infoBlurbs'>These are your Dailies</h4>
+            <p className='infoBlurbs'>Dailies repeat on a regular basis. Choose the schedule that works best for you!</p>
         </>
     )
 }

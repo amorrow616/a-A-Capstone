@@ -61,6 +61,8 @@ export default function UserRewards() {
                     </div >
                 </li>
             ))}
+            <h4 className='infoBlurbs'>These are your Rewards</h4>
+            <p className='infoBlurbs'>Time to treat yo self! Add things that you enjoy doing as a reward for your hard work.</p>
         </>
     )
 }
