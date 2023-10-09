@@ -10,6 +10,10 @@ export default function UserTodos() {
     const todos = useSelector((state) => state.todos.allTodos);
     const userId = useSelector((state) => state.session.user.id);
     const [title, setTitle] = useState('');
+    const [checkboxStates, setCheckboxStates] = useState(() => {
+        const storedStates = JSON.parse(localStorage.getItem('checkboxStates')) || {};
+        return storedStates;
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +28,19 @@ export default function UserTodos() {
             await dispatch(todoActions.fetchTodos(userId));
             setTitle('');
         });
-    }
+    };
+
+    const handleCheckboxChange = (todoId, index) => {
+        const updatedStates = {
+            ...checkboxStates,
+            [todoId]: {
+                ...(checkboxStates[todoId] || {}),
+                [index]: !(checkboxStates[todoId]?.[index] || false)
+            }
+        };
+        setCheckboxStates(updatedStates);
+        localStorage.setItem('checkboxStates', JSON.stringify(updatedStates));
+    };
 
     useEffect(() => {
         dispatch(todoActions.fetchTodos(userId));
@@ -45,28 +61,34 @@ export default function UserTodos() {
                     />
                 </label>
             </form>
-            {todos && Object.values(todos).map((todo) => (
-                <li key={todo.id} id="dailiesList">
-                    <div className="eachElement">
-                        <div className="visibleElement">
-                            <div className="formTitle">{todo.title}</div>
-                            <div className="formNotes">{todo.notes}</div>
-                            <div>{todo.checklist && todo.checklist.split(',').map((item) => (
-                                <label>
-                                    <input
-                                        type='checkbox'
-                                    />
-                                    {item}
-                                </label>
-                            ))}</div>
+            {todos && Object.values(todos).map((todo) => {
+                const todoId = todo.id;
+                const todoCheckboxStates = checkboxStates[todoId] || [];
+                return (
+                    <li key={todo.id} id="dailiesList">
+                        <div className="eachElement">
+                            <div className="visibleElement">
+                                <div className="formTitle">{todo.title}</div>
+                                <div className="formNotes">{todo.notes}</div>
+                                <div>{todo.checklist && todo.checklist.split(',').map((item, index) => (
+                                    <label>
+                                        <input
+                                            type='checkbox'
+                                            checked={todoCheckboxStates[index] || false}
+                                            onChange={() => handleCheckboxChange(todoId, index)}
+                                        />
+                                        {item}
+                                    </label>
+                                ))}</div>
+                            </div>
+                            <OpenModalButton
+                                modalComponent={<UpdateTodo todo={todo} />}
+                                className={'updateButton'}
+                            />
                         </div>
-                        <OpenModalButton
-                            modalComponent={<UpdateTodo todo={todo} />}
-                            className={'updateButton'}
-                        />
-                    </div>
-                </li>
-            ))}
+                    </li>
+                )
+            })}
             <h4 className='infoBlurbs'>These are your To Do's</h4>
             <p className='infoBlurbs'>To Do's need to be completed once. Add checklists to your To Do's to increase their value.</p>
         </>
